@@ -1,7 +1,6 @@
 {
   "name": "vitest-codemod",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "description": "Codemod scripts to migrate your JavaScript unit tests to vitest",
   "keywords": [
     "jscodeshift",
@@ -11,7 +10,7 @@
     "vitest",
     "migration"
   ],
-  "homepage": "https://github.com/trivikr/vitest-codemod",
+  "homepage": "https://github.com/trivikr/vitest-codemod/tree/main/packages/vitest-codemod",
   "license": "MIT",
   "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
   "files": [
@@ -23,21 +22,14 @@
   "bin": "bin/vitest-codemod",
   "repository": {
     "type": "git",
-    "url": "https://github.com/trivikr/vitest-codemod.git"
+    "url": "https://github.com/trivikr/vitest-codemod.git",
+    "directory": "packages/vitest-codemod"
   },
   "scripts": {
-    "build": "tsc",
-    "release": "yarn build && changeset publish"
+    "build": "tsc"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
-  },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "@tsconfig/node14": "^1.0.3",
-    "@types/jscodeshift": "^0.11.6",
-    "@types/node": "^14.18.36",
-    "typescript": "~4.9.4"
   },
   "engines": {
     "node": ">=14.0.0"
