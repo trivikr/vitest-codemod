@@ -28,6 +28,9 @@
     "build": "tsc",
     "release": "pnpm build && changeset publish"
   },
+  "dependencies": {
+    "jscodeshift": "0.14.0"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "typescript": "~4.9.4"
