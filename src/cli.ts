@@ -3,6 +3,7 @@
 // Most of the code from here is from bin/jscodeshift.js
 // It's kept that way so that users can reuse jscodeshift options.
 
+// @ts-nocheck
 import Runner from "jscodeshift/dist/Runner";
 import path from "path";
 
