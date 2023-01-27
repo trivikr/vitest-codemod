@@ -1,0 +1,30 @@
+name: push
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  call-build:
+    uses: ./.github/workflows/build.yml
+  release:
+    needs: call-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          cache: "pnpm"
+
+      - run: pnpm
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          title: Publish <version>
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
