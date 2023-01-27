@@ -17,7 +17,7 @@ jobs:
         with:
           cache: "pnpm"
 
-      - run: pnpm
+      - run: pnpm install
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
