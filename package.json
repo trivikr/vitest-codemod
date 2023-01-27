@@ -13,11 +13,24 @@
   "homepage": "https://github.com/trivikr/vitest-codemod",
   "license": "MIT",
   "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "main": "dist/cli.js",
+  "types": "dist/cli.d.ts",
+  "bin": "bin/vitest-codemod",
   "repository": {
     "type": "git",
     "url": "https://github.com/trivikr/vitest-codemod.git"
   },
+  "scripts": {
+    "build": "tsc",
+    "release": "pnpm build && changeset publish",
+    "test": "vitest"
+  },
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "packageManager": "pnpm@7.26.0"
 }
