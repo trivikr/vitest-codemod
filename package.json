@@ -26,8 +26,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "release": "pnpm build && changeset publish",
-    "test": "vitest"
+    "release": "pnpm build && changeset publish"
   },
   "engines": {
     "node": ">=14.0.0"
