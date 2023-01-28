@@ -4,7 +4,7 @@
   "private": true,
   "description": "Monorepo for vitest-codemod scripts",
   "scripts": {
-    "build": "tsc",
+    "build": "yarn workspaces foreach run build",
     "release": "yarn build && changeset publish"
   },
   "devDependencies": {

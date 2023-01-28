@@ -31,14 +31,14 @@
   "dependencies": {
     "jscodeshift": "0.14.0"
   },
+  "devDependencies": {
+    "typescript": "4.9.4"
+  },
   "engines": {
     "node": ">=14.0.0"
   },
   "packageManager": "yarn@3.3.1",
   "workspaces": [
     "packages/*"
-  ],
-  "devDependencies": {
-    "typescript": "4.9.4"
-  }
+  ]
 }
