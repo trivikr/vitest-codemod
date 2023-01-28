@@ -887,6 +887,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest-codemod/repository@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@vitest-codemod/repository@workspace:."
+  dependencies:
+    "@changesets/cli": ^2.26.0
+    "@tsconfig/node14": ^1.0.3
+    "@types/jscodeshift": ^0.11.6
+    "@types/node": ^14.18.36
+  languageName: unknown
+  linkType: soft
+
 "ansi-colors@npm:^4.1.1, ansi-colors@npm:^4.1.3":
   version: 4.1.3
   resolution: "ansi-colors@npm:4.1.3"
@@ -3257,14 +3268,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest-codemod@workspace:.":
+"vitest-codemod@workspace:packages/vitest-codemod":
   version: 0.0.0-use.local
-  resolution: "vitest-codemod@workspace:."
+  resolution: "vitest-codemod@workspace:packages/vitest-codemod"
   dependencies:
-    "@changesets/cli": ^2.26.0
-    "@tsconfig/node14": ^1.0.3
-    "@types/jscodeshift": ^0.11.6
-    "@types/node": ^14.18.36
     jscodeshift: 0.14.0
     typescript: ~4.9.4
   bin:
