@@ -898,6 +898,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@vitest-codemod/types@workspace:packages/types":
+  version: 0.0.0-use.local
+  resolution: "@vitest-codemod/types@workspace:packages/types"
+  dependencies:
+    typescript: ~4.9.4
+  languageName: unknown
+  linkType: soft
+
 "ansi-colors@npm:^4.1.1, ansi-colors@npm:^4.1.3":
   version: 4.1.3
   resolution: "ansi-colors@npm:4.1.3"
