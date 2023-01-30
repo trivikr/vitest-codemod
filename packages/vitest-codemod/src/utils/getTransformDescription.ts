@@ -1,4 +1,4 @@
-import { VitestCodemodTransform } from "../transforms";
+import { VitestCodemodTransform } from "@vitest-codemod/types";
 
 const getWrappedBlocks = (sentence: string, blockLength: number): string[] => {
   const words = sentence.split(" ");
