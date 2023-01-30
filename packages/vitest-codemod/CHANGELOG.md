@@ -1,5 +1,11 @@
 # vitest-codemod
 
+## 0.0.6
+
+### Patch Changes
+
+- [#28](https://github.com/trivikr/vitest-codemod/pull/28) [`c6b49e8`](https://github.com/trivikr/vitest-codemod/commit/c6b49e81e02f59438f1d6b2eb8334f6895d2ad4d) Thanks [@trivikr](https://github.com/trivikr)! - Return updated transform file path
+
 ## 0.0.5
 
 ### Patch Changes

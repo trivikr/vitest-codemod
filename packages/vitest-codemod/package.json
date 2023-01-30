@@ -1,6 +1,6 @@
 {
   "name": "vitest-codemod",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Codemod scripts to migrate your JavaScript unit tests to vitest",
   "keywords": [
     "jscodeshift",
