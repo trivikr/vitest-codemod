@@ -1,5 +1,11 @@
 # @vitest-codemod/types
 
+## 0.0.2
+
+### Patch Changes
+
+- [#22](https://github.com/trivikr/vitest-codemod/pull/22) [`ca984b4`](https://github.com/trivikr/vitest-codemod/commit/ca984b4cc07349643325bd2d729687e1f00106d9) Thanks [@trivikr](https://github.com/trivikr)! - Remove redundant code
+
 ## 0.0.1
 
 ### Patch Changes
