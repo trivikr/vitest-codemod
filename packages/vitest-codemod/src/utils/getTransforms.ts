@@ -1,4 +1,3 @@
-// import { VitestCodemodTransform } from "@vitest-codemod/types";
+import { transform as jestTransform } from "@vitest-codemod/jest";
 
-// ToDo: Return transforms from @vitest-codemod/* packages
-export const getTransforms = () => [];
+export const getTransforms = () => [jestTransform];
