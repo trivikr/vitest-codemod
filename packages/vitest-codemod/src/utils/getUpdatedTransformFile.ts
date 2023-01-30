@@ -1,4 +1,2 @@
-import { resolve } from "path";
-
-export const getUpdatedTransformFile = (transformFolder: string) =>
-  resolve(__dirname, "..", "transforms", transformFolder, "transformer.js");
+export const getUpdatedTransformFile = (transformName: string) =>
+  require.resolve(`@vitest-codemod/${transformName}/dist/transformer.js`);
