@@ -1,4 +1,4 @@
-import { VitestCodemodTransform } from "../transforms";
+import { VitestCodemodTransform } from "@vitest-codemod/types";
 import { getTransformDescription } from "./getTransformDescription";
 
 const separator = "-".repeat(95);
