@@ -16,7 +16,7 @@
     "directory": "packages/types"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "yarn g:tsc"
   },
   "devDependencies": {
     "typescript": "~4.9.4"

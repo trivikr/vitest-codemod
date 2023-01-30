@@ -26,7 +26,7 @@
     "directory": "packages/vitest-codemod"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "yarn g:tsc"
   },
   "dependencies": {
     "@vitest-codemod/jest": "^0.0.3",

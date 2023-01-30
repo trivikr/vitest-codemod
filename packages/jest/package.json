@@ -16,7 +16,7 @@
     "directory": "packages/jest"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "yarn g:tsc"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
