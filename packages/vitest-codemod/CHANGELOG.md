@@ -1,5 +1,14 @@
 # vitest-codemod
 
+## 0.0.7
+
+### Patch Changes
+
+- [#30](https://github.com/trivikr/vitest-codemod/pull/30) [`0429895`](https://github.com/trivikr/vitest-codemod/commit/0429895d54d044e1e8f085fb9c5150d635c1f7f2) Thanks [@trivikr](https://github.com/trivikr)! - Default parser to babylon
+
+- Updated dependencies [[`0429895`](https://github.com/trivikr/vitest-codemod/commit/0429895d54d044e1e8f085fb9c5150d635c1f7f2)]:
+  - @vitest-codemod/jest@0.0.3
+
 ## 0.0.6
 
 ### Patch Changes
