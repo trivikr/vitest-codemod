@@ -116,7 +116,7 @@ export const getJsCodeshiftParser = () =>
     parser: {
       display_index: 9,
       choices: ["babel", "babylon", "flow", "ts", "tsx"],
-      default: "babel",
+      default: "babylon",
       help: "the parser to use for parsing the source files",
     },
     parserConfig: {
