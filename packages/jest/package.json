@@ -1,0 +1,31 @@
+{
+  "name": "@vitest-codemod/jest",
+  "version": "0.0.0",
+  "description": "Transformer for migrating from Jest to Vitest",
+  "homepage": "https://github.com/trivikr/vitest-codemod/tree/main/packages/jest",
+  "license": "MIT",
+  "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trivikr/vitest-codemod.git",
+    "directory": "packages/jest"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "jscodeshift": "0.14.0"
+  },
+  "devDependencies": {
+    "@vitest-codemod/types": "workspace:^0.0.1",
+    "typescript": "~4.9.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
