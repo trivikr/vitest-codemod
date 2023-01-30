@@ -914,7 +914,6 @@ __metadata:
   dependencies:
     "@vitest-codemod/types": ^0.0.2
     jscodeshift: 0.14.0
-    typescript: ~4.9.4
   languageName: unknown
   linkType: soft
 
@@ -927,14 +926,13 @@ __metadata:
     "@tsconfig/node14": ^1.0.3
     "@types/jscodeshift": ^0.11.6
     "@types/node": ^14.18.36
+    typescript: ~4.9.4
   languageName: unknown
   linkType: soft
 
 "@vitest-codemod/types@^0.0.2, @vitest-codemod/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@vitest-codemod/types@workspace:packages/types"
-  dependencies:
-    typescript: ~4.9.4
   languageName: unknown
   linkType: soft
 
@@ -3350,7 +3348,6 @@ __metadata:
     "@vitest-codemod/jest": ^0.0.3
     "@vitest-codemod/types": ^0.0.2
     jscodeshift: 0.14.0
-    typescript: ~4.9.4
   bin:
     vitest-codemod: bin/vitest-codemod
   languageName: unknown

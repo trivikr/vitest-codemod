@@ -16,14 +16,13 @@
     "directory": "packages/jest"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "yarn g:tsc"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
   },
   "devDependencies": {
-    "@vitest-codemod/types": "^0.0.2",
-    "typescript": "~4.9.4"
+    "@vitest-codemod/types": "^0.0.2"
   },
   "engines": {
     "node": ">=14.0.0"
