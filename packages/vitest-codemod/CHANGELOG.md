@@ -1,5 +1,14 @@
 # vitest-codemod
 
+## 0.0.5
+
+### Patch Changes
+
+- [#26](https://github.com/trivikr/vitest-codemod/pull/26) [`bce0da7`](https://github.com/trivikr/vitest-codemod/commit/bce0da7221212bd13312b065a192d14a29ec40c4) Thanks [@trivikr](https://github.com/trivikr)! - Remove "workspace:" protocol for internal dependencies
+
+- Updated dependencies [[`bce0da7`](https://github.com/trivikr/vitest-codemod/commit/bce0da7221212bd13312b065a192d14a29ec40c4)]:
+  - @vitest-codemod/jest@0.0.2
+
 ## 0.0.4
 
 ### Patch Changes

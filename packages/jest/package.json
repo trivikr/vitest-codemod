@@ -1,6 +1,6 @@
 {
   "name": "@vitest-codemod/jest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Transformer for migrating from Jest to Vitest",
   "homepage": "https://github.com/trivikr/vitest-codemod/tree/main/packages/jest",
   "license": "MIT",
