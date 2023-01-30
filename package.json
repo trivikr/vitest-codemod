@@ -5,6 +5,7 @@
   "description": "Monorepo for vitest-codemod scripts",
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev run build",
+    "g:tsc": "cd $INIT_CWD && tsc",
     "release": "yarn build && changeset publish",
     "version": "changeset version && yarn --no-immutable"
   },
