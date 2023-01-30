@@ -1,6 +1,6 @@
 {
   "name": "vitest-codemod",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Codemod scripts to migrate your JavaScript unit tests to vitest",
   "keywords": [
     "jscodeshift",
@@ -29,7 +29,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@vitest-codemod/jest": "^0.0.2",
+    "@vitest-codemod/jest": "^0.0.3",
     "jscodeshift": "0.14.0"
   },
   "devDependencies": {
