@@ -908,7 +908,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest-codemod/jest@workspace:packages/jest":
+"@vitest-codemod/jest@workspace:^0.0.0, @vitest-codemod/jest@workspace:packages/jest":
   version: 0.0.0-use.local
   resolution: "@vitest-codemod/jest@workspace:packages/jest"
   dependencies:
@@ -3347,6 +3347,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vitest-codemod@workspace:packages/vitest-codemod"
   dependencies:
+    "@vitest-codemod/jest": "workspace:^0.0.0"
     "@vitest-codemod/types": "workspace:^0.0.1"
     jscodeshift: 0.14.0
     typescript: ~4.9.4

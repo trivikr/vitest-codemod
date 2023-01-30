@@ -29,6 +29,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@vitest-codemod/jest": "workspace:^0.0.0",
     "jscodeshift": "0.14.0"
   },
   "devDependencies": {
