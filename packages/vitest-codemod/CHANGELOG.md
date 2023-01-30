@@ -1,5 +1,14 @@
 # vitest-codemod
 
+## 0.0.4
+
+### Patch Changes
+
+- [#24](https://github.com/trivikr/vitest-codemod/pull/24) [`a69ada5`](https://github.com/trivikr/vitest-codemod/commit/a69ada59e53df7b40e5d036762604b69a7518fe6) Thanks [@trivikr](https://github.com/trivikr)! - Display name and description from @vitest-codemod/jest
+
+- Updated dependencies [[`fbf7743`](https://github.com/trivikr/vitest-codemod/commit/fbf7743d28b070c8b570d80457cfaf68ebbae432)]:
+  - @vitest-codemod/jest@0.0.1
+
 ## 0.0.3
 
 ### Patch Changes
