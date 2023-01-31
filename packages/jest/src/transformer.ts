@@ -17,7 +17,7 @@ const transformer = async (file: FileInfo, api: API) => {
     apis.sort()
     const importSpecifiers = apis.map(apiName => j.importSpecifier(j.identifier(apiName)))
     const importDeclaration = j.importDeclaration(importSpecifiers, j.stringLiteral('vitest'))
-    source.get().node.program.body.unshift(importDeclaration)
+    source.get('program', 'body').unshift(importDeclaration)
   }
 
   return source.toSource()
