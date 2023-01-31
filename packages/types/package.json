@@ -1,6 +1,6 @@
 {
   "name": "@vitest-codemod/types",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Types for vitest-codemod tranforms",
   "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
   "license": "MIT",

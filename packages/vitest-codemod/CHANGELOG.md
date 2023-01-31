@@ -1,5 +1,14 @@
 # vitest-codemod
 
+## 0.0.8
+
+### Patch Changes
+
+- [#34](https://github.com/trivikr/vitest-codemod/pull/34) [`8e60373`](https://github.com/trivikr/vitest-codemod/commit/8e60373e71a0530b86f73e18a171d249fea76ed7) Thanks [@trivikr](https://github.com/trivikr)! - Format code with @antfu/eslint-config rules
+
+- Updated dependencies [[`8e60373`](https://github.com/trivikr/vitest-codemod/commit/8e60373e71a0530b86f73e18a171d249fea76ed7)]:
+  - @vitest-codemod/jest@0.0.4
+
 ## 0.0.7
 
 ### Patch Changes
