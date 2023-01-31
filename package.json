@@ -9,6 +9,7 @@
     "g:tsc": "cd $INIT_CWD && tsc",
     "lint": "eslint 'packages/**/*.{js,ts,json,md}'",
     "release": "yarn build && changeset publish",
+    "test": "yarn workspaces foreach --topological-dev run test",
     "version": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
