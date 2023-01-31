@@ -7,6 +7,7 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev run build",
     "g:tsc": "cd $INIT_CWD && tsc",
+    "lint": "eslint --fix packages/**/*.{js,ts,json,md}",
     "release": "yarn build && changeset publish",
     "version": "changeset version && yarn --no-immutable"
   },
