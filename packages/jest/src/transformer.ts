@@ -1,5 +1,4 @@
 import type { API, FileInfo } from 'jscodeshift'
-import addImports from 'jscodeshift-add-imports'
 
 const transformer = async (file: FileInfo, api: API) => {
   const j = api.jscodeshift
@@ -11,12 +10,14 @@ const transformer = async (file: FileInfo, api: API) => {
     const calls = source.find(j.CallExpression, { callee: { name } })
 
     if (calls.length > 0)
-      apis.push(j.importSpecifier(j.identifier(name), j.identifier(name)))
+      apis.push(name)
   }
 
   if (apis.length) {
     apis.sort()
-    addImports(source, j.importDeclaration(apis, j.stringLiteral('vitest')))
+    const importSpecifiers = apis.map(apiName => j.importSpecifier(j.identifier(apiName)))
+    const importDeclaration = j.importDeclaration(importSpecifiers, j.stringLiteral('vitest'))
+    source.get().node.program.body.unshift(importDeclaration)
   }
 
   return source.toSource()
