@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "yarn g:tsc",
-    "test": "exit 0"
+    "test": "yarn jest"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
