@@ -2,23 +2,23 @@
   "name": "@vitest-codemod/types",
   "version": "0.0.2",
   "description": "Types for vitest-codemod tranforms",
-  "homepage": "https://github.com/trivikr/vitest-codemod/tree/main/packages/types",
-  "license": "MIT",
   "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "homepage": "https://github.com/trivikr/vitest-codemod/tree/main/packages/types",
   "repository": {
     "type": "git",
     "url": "https://github.com/trivikr/vitest-codemod.git",
     "directory": "packages/types"
   },
-  "scripts": {
-    "build": "yarn g:tsc"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=14.0.0"
+  },
+  "scripts": {
+    "build": "yarn g:tsc"
   }
 }

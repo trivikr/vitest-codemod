@@ -1,2 +1,2 @@
 export const getUpdatedTransformFile = (transformName: string) =>
-  require.resolve(`@vitest-codemod/${transformName}/dist/transformer.js`);
+  require.resolve(`@vitest-codemod/${transformName}/dist/transformer.js`)

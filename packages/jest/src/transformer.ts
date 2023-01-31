@@ -1,12 +1,12 @@
-import { API, FileInfo } from "jscodeshift";
+import type { API, FileInfo } from 'jscodeshift'
 
 const transformer = async (file: FileInfo, api: API) => {
-  const j = api.jscodeshift;
-  const source = j(file.source);
+  const j = api.jscodeshift
+  const source = j(file.source)
 
   // ToDo: Add the transform logic here
-  
-  return source.toSource();
+
+  return source.toSource()
 }
 
-export default transformer;
+export default transformer
