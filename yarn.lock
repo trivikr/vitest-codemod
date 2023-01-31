@@ -665,7 +665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/traverse@npm:^7.20.10, @babel/traverse@npm:^7.20.12, @babel/traverse@npm:^7.20.13, @babel/traverse@npm:^7.20.7, @babel/traverse@npm:^7.7.2":
+"@babel/traverse@npm:^7.20.10, @babel/traverse@npm:^7.20.12, @babel/traverse@npm:^7.20.13, @babel/traverse@npm:^7.20.7, @babel/traverse@npm:^7.4.5, @babel/traverse@npm:^7.7.2":
   version: 7.20.13
   resolution: "@babel/traverse@npm:7.20.13"
   dependencies:
@@ -1932,6 +1932,7 @@ __metadata:
     "@vitest-codemod/types": ^0.0.3
     jest: ^29.4.1
     jscodeshift: 0.14.0
+    jscodeshift-add-imports: ^1.0.10
   languageName: unknown
   linkType: soft
 
@@ -5367,6 +5368,27 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: c7830dfd456c3ef2c6e355cc5a92e6700ceafa1d14bba54497b34a99f0376cecbb3e9ac14d3e5849b426d5a5140709a66237a8c991c675431271c4ce5504151a
+  languageName: node
+  linkType: hard
+
+"jscodeshift-add-imports@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "jscodeshift-add-imports@npm:1.0.10"
+  dependencies:
+    "@babel/traverse": ^7.4.5
+    jscodeshift-find-imports: ^2.0.2
+  peerDependencies:
+    jscodeshift: ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0
+  checksum: ecc64f24bea38864c56364236d9e78fe63930ee2c2a9e3ab9444fd62e013e80f1e21cbf854455aa1939be6bd58ce9054acc06bf9d4f327f99446c64503301de6
+  languageName: node
+  linkType: hard
+
+"jscodeshift-find-imports@npm:^2.0.2":
+  version: 2.0.4
+  resolution: "jscodeshift-find-imports@npm:2.0.4"
+  peerDependencies:
+    jscodeshift: ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0
+  checksum: b57e6f6ca7c94a528d8dd6ea888765ccae03d4005026ea4423f2c8572c7abb1bff5fab96ad0f04c6cb80628ecd6944386b450dc8d231905d2cb17a34129d9b86
   languageName: node
   linkType: hard
 

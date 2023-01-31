@@ -23,7 +23,8 @@
     "test": "yarn jest && yarn g:vitest"
   },
   "dependencies": {
-    "jscodeshift": "0.14.0"
+    "jscodeshift": "0.14.0",
+    "jscodeshift-add-imports": "^1.0.10"
   },
   "devDependencies": {
     "@vitest-codemod/types": "^0.0.3",
