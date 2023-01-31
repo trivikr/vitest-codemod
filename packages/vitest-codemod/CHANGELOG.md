@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [#42](https://github.com/trivikr/vitest-codemod/pull/42) [`9a534e3`](https://github.com/trivikr/vitest-codemod/commit/9a534e3bfc0491886cb752b46e769ea9970af272) Thanks [@trivikr](https://github.com/trivikr)! - Add transform for vitest imports for jest globals
+- [#42](https://github.com/trivikr/vitest-codemod/pull/42) [`9a534e3`](https://github.com/trivikr/vitest-codemod/commit/9a534e3bfc0491886cb752b46e769ea9970af272) Thanks [@trivikr](https://github.com/trivikr)! - Add vitest imports for jest globals
 
 - Updated dependencies [[`9a534e3`](https://github.com/trivikr/vitest-codemod/commit/9a534e3bfc0491886cb752b46e769ea9970af272)]:
   - @vitest-codemod/jest@0.0.5
