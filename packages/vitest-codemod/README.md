@@ -27,6 +27,27 @@ To use vitest-codemod, please install [Node.js][install-nodejs].
   npx clear-npx-cache
   ```
 
+## Example
+
+```console
+$ cat example.spec.js
+describe("basic", () => {
+  test("Math.sqrt()", () => {
+    expect(Math.sqrt(4)).toBe(2);
+  })
+});
+
+$ npx vitest-codemod -t jest example.spec.js
+
+$ cat example.spec.js
+import { describe, expect, test } from "vitest";
+describe("basic", () => {
+  test("Math.sqrt()", () => {
+    expect(Math.sqrt(4)).toBe(2);
+  })
+});
+```
+
 ## License
 
 This library is licensed under the MIT License. See the LICENSE file.
