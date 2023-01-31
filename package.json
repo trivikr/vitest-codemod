@@ -5,11 +5,11 @@
   "packageManager": "yarn@3.3.1",
   "description": "Monorepo for vitest-codemod scripts",
   "scripts": {
-    "build": "yarn workspaces foreach --topological-dev run build",
+    "build": "yarn workspaces foreach --topological-dev --verbose run build",
     "g:tsc": "cd $INIT_CWD && tsc",
     "lint": "eslint 'packages/**/*.{js,ts,json,md}'",
     "release": "yarn build && changeset publish",
-    "test": "yarn workspaces foreach --topological-dev run test",
+    "test": "yarn workspaces foreach --topological-dev --verbose run test",
     "version": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
