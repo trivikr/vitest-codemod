@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.1.0
+
+### Minor Changes
+
+- [#46](https://github.com/trivikr/vitest-codemod/pull/46) [`fc6bbca`](https://github.com/trivikr/vitest-codemod/commit/fc6bbca36632890c09e4f0d4167d152153a1366d) Thanks [@trivikr](https://github.com/trivikr)! - Bump to 0.1.0 as basic transform to support jest has landed
+
 ## 0.0.5
 
 ### Patch Changes
