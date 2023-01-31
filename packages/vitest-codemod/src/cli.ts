@@ -3,60 +3,61 @@
 // Most of the code from here is from bin/jscodeshift.js
 // It's kept that way so that users can reuse jscodeshift options.
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import Runner from "jscodeshift/dist/Runner";
-import path from "path";
+import path from 'path'
+import Runner from 'jscodeshift/dist/Runner'
 
 import {
   getHelpParagraph,
   getJsCodeshiftParser,
   getTransforms,
   getUpdatedTransformFile,
-} from "./utils";
+} from './utils'
 
-const args = process.argv;
-const transforms = getTransforms();
+const args = process.argv
+const transforms = getTransforms()
 
-if (args[2] === "--help" || args[2] === "-h") {
-  process.stdout.write(getHelpParagraph(transforms));
-}
+if (args[2] === '--help' || args[2] === '-h')
+  process.stdout.write(getHelpParagraph(transforms))
 
-const parser = getJsCodeshiftParser();
+const parser = getJsCodeshiftParser()
 
-let options, positionalArguments;
+let options, positionalArguments
 try {
-  ({ options, positionalArguments } = parser.parse());
+  ({ options, positionalArguments } = parser.parse())
   if (positionalArguments.length === 0 && !options.stdin) {
     process.stderr.write(
-      "Error: You have to provide at least one file/directory to transform." +
-        "\n\n---\n\n" +
-        parser.getHelpText()
-    );
-    process.exit(1);
+      'Error: You have to provide at least one file/directory to transform.'
+        + `\n\n---\n\n${
+        parser.getHelpText()}`,
+    )
+    process.exit(1)
   }
-} catch (e) {
+}
+catch (e) {
   const exitCode = e.exitCode === undefined ? 1 : e.exitCode;
-  (exitCode ? process.stderr : process.stdout).write(e.message);
-  process.exit(exitCode);
+  (exitCode ? process.stderr : process.stdout).write(e.message)
+  process.exit(exitCode)
 }
 
-const { transform } = options;
-if (transforms.map(({ name }) => name).includes(transform)) {
-  options.transform = getUpdatedTransformFile(transform);
-}
+const { transform } = options
+if (transforms.map(({ name }) => name).includes(transform))
+  options.transform = getUpdatedTransformFile(transform)
 
 function run(paths, options) {
   Runner.run(
     /^https?/.test(options.transform) ? options.transform : path.resolve(options.transform),
     paths,
-    options
-  );
+    options,
+  )
 }
 
 if (options.stdin) {
-  let buffer = "";
-  process.stdin.on("data", (data) => (buffer += data));
-  process.stdin.on("end", () => run(buffer.split("\n"), options));
-} else {
-  run(positionalArguments, options);
+  let buffer = ''
+  process.stdin.on('data', data => (buffer += data))
+  process.stdin.on('end', () => run(buffer.split('\n'), options))
+}
+else {
+  run(positionalArguments, options)
 }

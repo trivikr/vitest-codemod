@@ -1,3 +1,3 @@
-import { transform as jestTransform } from "@vitest-codemod/jest";
+import { transform as jestTransform } from '@vitest-codemod/jest'
 
-export const getTransforms = () => [jestTransform];
+export const getTransforms = () => [jestTransform]
