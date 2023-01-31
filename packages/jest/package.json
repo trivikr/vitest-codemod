@@ -20,12 +20,13 @@
   },
   "scripts": {
     "build": "yarn g:tsc",
-    "test": "exit 0"
+    "test": "yarn jest && yarn g:vitest"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
   },
   "devDependencies": {
-    "@vitest-codemod/types": "^0.0.3"
+    "@vitest-codemod/types": "^0.0.3",
+    "jest": "^29.4.1"
   }
 }
