@@ -20,6 +20,8 @@ const transformer = async (file: FileInfo, api: API) => {
     source.get('program', 'body').unshift(importDeclaration)
   }
 
+  source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
+
   return source.toSource()
 }
 
