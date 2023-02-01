@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.1.2
+
+### Patch Changes
+
+- [#56](https://github.com/trivikr/vitest-codemod/pull/56) [`55d5334`](https://github.com/trivikr/vitest-codemod/commit/55d5334fd57703a5d5272ea19c3dfce78fa478d2) Thanks [@trivikr](https://github.com/trivikr)! - Add it/test import if a member function is called
+
 ## 0.1.1
 
 ### Patch Changes
