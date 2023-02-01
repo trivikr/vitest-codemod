@@ -1,6 +1,6 @@
 {
   "name": "@vitest-codemod/jest",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Transformer for migrating from Jest to Vitest",
   "author": "Kamat, Trivikram <trivikr.dev@gmail.com>",
   "license": "MIT",
