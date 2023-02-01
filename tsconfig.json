@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "declaration": true,
+    "baseUrl": ".",
     "paths": {
       "@vitest-codemod/*": ["packages/*/src"]
     }
