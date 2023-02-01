@@ -1,3 +1,3 @@
 {
-  "testMatch": ["**/src/__fixtures__/*.input.{js,mjs}"]
+  "testMatch": ["**/src/__fixtures__/**/*.input.{js,mjs}"]
 }
