@@ -3,8 +3,9 @@ describe("test-skip", () => {
     expect(Math.sqrt(4)).toBe(3);
   });
   it.skip.each([
-    [[4, 3],[9, 4]]
-  ])("Math.sqrt(%s) = %s", ([input, output]) => {
+    [4, 2],
+    [9, 3],
+  ])("Math.sqrt(%s) = %s", (input, output) => {
     expect(Math.sqrt(input)).toBe(output);
   });
 
@@ -12,8 +13,9 @@ describe("test-skip", () => {
     expect(Math.sqrt(4)).toBe(3);
   });
   test.skip.each([
-    [[4, 3],[9, 4]]
-  ])("Math.sqrt(%s) = %s", ([input, output]) => {
+    [4, 2],
+    [9, 3],
+  ])("Math.sqrt(%s) = %s", (input, output) => {
     expect(Math.sqrt(input)).toBe(output);
   });
 });
