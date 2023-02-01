@@ -9,6 +9,9 @@ import transform from './transformer'
 describe('transformer', () => {
   const inputFileRegex = /(.*).input.m?[jt]sx?$/
   const fixtureDir = join(__dirname, '__fixtures__')
+  const fixtureSubDirs = readdirSync(fixtureDir, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name)
 
   const getTestFileMetadata = (dirPath: string) =>
     readdirSync(dirPath)
@@ -31,20 +34,23 @@ describe('transformer', () => {
     return { input, outputCode }
   }
 
-  it.concurrent.each(getTestFileMetadata(fixtureDir))(
-    'transforms: %s.%s',
-    async (filePrefix, fileExtension) => {
-      const { input, outputCode } = await getTestMetadata(fixtureDir, filePrefix, fileExtension)
+  describe.each(fixtureSubDirs)('%s', (subDir) => {
+    const subDirPath = join(fixtureDir, subDir)
+    it.concurrent.each(getTestFileMetadata(subDirPath))(
+      'transforms: %s.%s',
+      async (filePrefix, fileExtension) => {
+        const { input, outputCode } = await getTestMetadata(subDirPath, filePrefix, fileExtension)
 
-      const output = await transform(input, {
-        j: jscodeshift,
-        jscodeshift,
-        stats: () => {},
-        report: () => {},
-      })
+        const output = await transform(input, {
+          j: jscodeshift,
+          jscodeshift,
+          stats: () => {},
+          report: () => {},
+        })
 
-      expect(output.trim()).toEqual(outputCode.trim())
-    },
-    60000,
-  )
+        expect(output.trim()).toEqual(outputCode.trim())
+      },
+      60000,
+    )
+  })
 })
