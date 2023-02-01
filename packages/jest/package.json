@@ -20,7 +20,8 @@
   },
   "scripts": {
     "build": "yarn g:tsc",
-    "test": "yarn node --experimental-vm-modules $(yarn bin jest) && yarn g:vitest"
+    "test:jest": "yarn node --experimental-vm-modules $(yarn bin jest)",
+    "test": "yarn test:jest && yarn g:vitest"
   },
   "dependencies": {
     "jscodeshift": "0.14.0"
