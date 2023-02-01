@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 import transform from './transformer'
 
 describe('transformer', () => {
-  const inputFileRegex = /(.*).input.[jt]sx?$/
+  const inputFileRegex = /(.*).input.m?[jt]sx?$/
   const fixtureDir = join(__dirname, '__fixtures__')
 
   const getTestFileMetadata = (dirPath: string) =>
