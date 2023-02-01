@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.1.1
+
+### Patch Changes
+
+- [#49](https://github.com/trivikr/vitest-codemod/pull/49) [`bc5275b`](https://github.com/trivikr/vitest-codemod/commit/bc5275b75421213251c022d623a08ab8329b09cd) Thanks [@trivikr](https://github.com/trivikr)! - Replace explicit jest global imports
+
 ## 0.1.0
 
 ### Minor Changes
