@@ -2,5 +2,6 @@
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
     "declaration": true
-  }
+  },
+  "exclude": ["dist", "**/__fixtures__/**", "**/*.spec.ts"]
 }
