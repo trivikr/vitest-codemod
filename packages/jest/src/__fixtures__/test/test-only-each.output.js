@@ -1,4 +1,4 @@
-import { describe, expect, it, test } from "vitest";
+import { expect, it, test } from "vitest";
 it.only.each([
   [4, 2],
   [9, 3],

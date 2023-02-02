@@ -1,4 +1,4 @@
-import { describe, expect, it, test } from "vitest";
+import { expect, it, test } from "vitest";
 it.only("Math.sqrt(4)", () => {
   expect(Math.sqrt(4)).toBe(2);
 });
