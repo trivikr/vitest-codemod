@@ -1,10 +1,8 @@
 import { describe, expect, it, test } from "vitest";
-describe("test-fails", () => {
-  it.fails("Math.sqrt(4) = 3", () => {
-    expect(Math.sqrt(4)).toBe(3);
-  });
+it.fails("Math.sqrt(4) = 3", () => {
+  expect(Math.sqrt(4)).toBe(3);
+});
 
-  test.fails("Math.sqrt(4) = 3", () => {
-    expect(Math.sqrt(4)).toBe(3);
-  });
+test.fails("Math.sqrt(4) = 3", () => {
+  expect(Math.sqrt(4)).toBe(3);
 });
