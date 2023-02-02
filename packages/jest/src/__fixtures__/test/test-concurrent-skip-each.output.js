@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest";
-describe("test-each", () => {
+describe("test-concurrent-skip-each", () => {
   it.concurrent.skip.each([
     [4, 3],
     [9, 4],
