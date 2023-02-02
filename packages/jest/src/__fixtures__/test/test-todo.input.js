@@ -1,4 +1,2 @@
-describe("test-todo", () => {
-  it.todo("test to be added");
-  test.todo("test to be added");
-});
+it.todo("test to be added");
+test.todo("test to be added");
