@@ -9,5 +9,5 @@ describe.only.each([
 });
 
 test('will not be run', () => {
-  expect(1 / 0).toBe(Infinity);
+  expect(Math.sqrt(4)).toBe(3);
 });
