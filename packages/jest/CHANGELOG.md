@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.1.4
+
+### Patch Changes
+
+- [#68](https://github.com/trivikr/vitest-codemod/pull/68) [`e102378`](https://github.com/trivikr/vitest-codemod/commit/e102378f8c677d07f838dad5e09b4a55a4617b30) Thanks [@trivikr](https://github.com/trivikr)! - Support transformation of `fit` to `it.only`
+
 ## 0.1.3
 
 ### Patch Changes
