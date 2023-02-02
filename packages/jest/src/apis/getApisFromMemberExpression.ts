@@ -2,6 +2,7 @@ import type { Collection, Identifier, JSCodeshift } from 'jscodeshift'
 
 const testApiProps = ['concurrent', 'each', 'only', 'skip', 'todo', 'failing']
 const jestGlobalApiProps = {
+  describe: ['each', 'only', 'skip'],
   fit: ['each', 'failing'],
   it: testApiProps,
   test: testApiProps,
