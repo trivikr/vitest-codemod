@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.2.0
+
+### Minor Changes
+
+- [#72](https://github.com/trivikr/vitest-codemod/pull/72) [`61d4e88`](https://github.com/trivikr/vitest-codemod/commit/61d4e88847b69ea91085da635ea198b35a9eeed1) Thanks [@trivikr](https://github.com/trivikr)! - Import describe when member expression is used in jest
+
 ## 0.1.4
 
 ### Patch Changes
