@@ -3,6 +3,7 @@ import {
   getApisFromCallExpression,
   getApisFromMemberExpression,
   replaceTestApiFailing,
+  replaceTestApiFit,
 } from './apis'
 
 const transformer = async (file: FileInfo, api: API) => {
@@ -21,6 +22,7 @@ const transformer = async (file: FileInfo, api: API) => {
   }
 
   replaceTestApiFailing(j, source)
+  replaceTestApiFit(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 
