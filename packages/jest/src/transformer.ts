@@ -1,5 +1,9 @@
 import type { API, FileInfo } from 'jscodeshift'
-import { getApisFromCallExpression, getApisFromMemberExpression } from './apis'
+import {
+  getApisFromCallExpression,
+  getApisFromMemberExpression,
+  replaceTestApiFailing,
+} from './apis'
 
 const transformer = async (file: FileInfo, api: API) => {
   const j = api.jscodeshift
@@ -15,6 +19,8 @@ const transformer = async (file: FileInfo, api: API) => {
     const importDeclaration = j.importDeclaration(importSpecifiers, j.stringLiteral('vitest'))
     source.get('program', 'body').unshift(importDeclaration)
   }
+
+  replaceTestApiFailing(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 
