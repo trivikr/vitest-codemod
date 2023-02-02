@@ -1,0 +1,9 @@
+import { describe, expect, it } from "vitest";
+describe("fit-each", () => {
+  it.only.each([
+    [4, 2],
+    [9, 3],
+  ])("Math.sqrt(%s) = %s", (input, output) => {
+    expect(Math.sqrt(input)).toBe(output);
+  });
+});

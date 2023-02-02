@@ -2,6 +2,7 @@ import type { Collection, Identifier, JSCodeshift } from 'jscodeshift'
 
 const testApiProps = ['concurrent', 'each', 'only', 'skip', 'todo', 'failing']
 const jestGlobalApiProps = {
+  fit: ['each', 'failing'],
   it: testApiProps,
   test: testApiProps,
 }
@@ -18,7 +19,7 @@ export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<a
     const propNames = [...new Set(propNamesList)]
     for (const propName of propNames) {
       if (jestApiProps.includes(propName)) {
-        apisFromMemberExpression.push(jestApi)
+        apisFromMemberExpression.push(jestApi !== 'fit' ? jestApi : 'it')
         break
       }
     }

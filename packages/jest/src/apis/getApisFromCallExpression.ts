@@ -1,6 +1,6 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
 
-const jestGlobalApis = ['afterAll', 'afterEach', 'beforeAll', 'beforeEach', 'describe', 'test', 'it', 'expect']
+const jestGlobalApis = ['afterAll', 'afterEach', 'beforeAll', 'beforeEach', 'describe', 'test', 'it', 'fit', 'expect']
 
 export const getApisFromCallExpression = (j: JSCodeshift, source: Collection<any>): string[] => {
   const apisFromCallExpression = []
@@ -9,7 +9,7 @@ export const getApisFromCallExpression = (j: JSCodeshift, source: Collection<any
     const calls = source.find(j.CallExpression, { callee: { name: jestGlobalApi } })
 
     if (calls.length > 0)
-      apisFromCallExpression.push(jestGlobalApi)
+      apisFromCallExpression.push(jestGlobalApi !== 'fit' ? jestGlobalApi : 'it')
   }
 
   return apisFromCallExpression
