@@ -21,8 +21,8 @@ const transformer = async (file: FileInfo, api: API) => {
     source.get('program', 'body').unshift(importDeclaration)
   }
 
-  replaceTestApiFailing(j, source)
   replaceTestApiFit(j, source)
+  replaceTestApiFailing(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 
