@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.1.3
+
+### Patch Changes
+
+- [#64](https://github.com/trivikr/vitest-codemod/pull/64) [`a38362b`](https://github.com/trivikr/vitest-codemod/commit/a38362b99ae58ce94d05655884a36086f7ddf342) Thanks [@trivikr](https://github.com/trivikr)! - Support transformation of `.failing` to `.fails`
+
 ## 0.1.2
 
 ### Patch Changes
