@@ -1,8 +1,4 @@
 describe("test-only", () => {
-  // This failing test won't be run
-  it("Math.sqrt(4)", () => {
-    expect(Math.sqrt(4)).toBe(3);
-  });
   it.only("Math.sqrt(4)", () => {
     expect(Math.sqrt(4)).toBe(2);
   });
@@ -13,10 +9,6 @@ describe("test-only", () => {
     expect(Math.sqrt(input)).toBe(output);
   });
 
-  // This failing test won't be run
-  test("Math.sqrt(4)", () => {
-    expect(Math.sqrt(4)).toBe(3);
-  });
   test.only("Math.sqrt(4)", () => {
     expect(Math.sqrt(4)).toBe(2);
   });
