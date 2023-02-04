@@ -44,7 +44,8 @@ test("this house has my desired features", () => {
     ["kitchen", "amenities"],
     ["oven", "stove", "washer"]
   );
-  expect(houseForSale).toHaveProperty(["kitchen", "amenities", 0], "oven");
+  // Uncomment after https://github.com/vitest-dev/vitest/issues/2804 is fixed
+  // expect(houseForSale).toHaveProperty(["kitchen", "amenities", 0], "oven");
   expect(houseForSale).toHaveProperty(
     "livingroom.amenities[0].couch[0][1].dimensions[0]",
     20
