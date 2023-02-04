@@ -1,4 +1,4 @@
 import { expect, test } from "vitest";
-test("resolves to lemon", () => {
+test("resolves", () => {
   return expect(Promise.resolve("lemon")).resolves.toBe("lemon");
 });

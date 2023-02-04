@@ -1,4 +1,4 @@
 import { expect, test } from "vitest";
-test("the best flavor is not coconut", () => {
+test("not", () => {
   expect("foo").not.toBe("bar");
 });
