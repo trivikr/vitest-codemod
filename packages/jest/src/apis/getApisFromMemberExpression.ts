@@ -5,9 +5,11 @@ const jestGlobalApiProps = {
   describe: ['each', 'only', 'skip'],
   fit: ['each', 'failing'],
   it: testApiProps,
-  jest: ['fn'],
   test: testApiProps,
 }
+
+const jestApiWithoutProps = ['jest']
+
 const jestToVitestApiMap: Record<string, string> = {
   fit: 'it',
   jest: 'vi',
@@ -29,6 +31,16 @@ export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<a
         break
       }
     }
+  }
+
+  for (const jestApiWithoutProp of jestApiWithoutProps) {
+    const jestApiWithoutPropCalls = source.find(j.MemberExpression, {
+      object: { name: jestApiWithoutProp },
+      property: { type: 'Identifier' },
+    })
+
+    if (jestApiWithoutPropCalls.length)
+      apisFromMemberExpression.push(jestToVitestApiMap[jestApiWithoutProp] ?? jestApiWithoutProp)
   }
 
   return apisFromMemberExpression
