@@ -1,4 +1,4 @@
-test("mockImplementation", () => {
+test("mockImplementationOnce", () => {
   const mockFn = jest.fn(() => 1);
   expect(mockFn()).toBe(1);
   

@@ -1,5 +1,5 @@
 import { expect, test, vi } from "vitest";
-test("mockImplementation", () => {
+test("mockReturnValue", () => {
   const mockFn = vi.fn(() => 1);
   expect(mockFn()).toBe(1);
   
