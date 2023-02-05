@@ -1,3 +1,6 @@
+/*
+ * Copyright 1994 (c) Netscape, Inc. and its affiliates. All Rights Reserved.
+ */
 import assert from 'node:assert';
 
 describe("basic", () => {

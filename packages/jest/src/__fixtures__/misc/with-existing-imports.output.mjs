@@ -1,4 +1,8 @@
+/*
+ * Copyright 1994 (c) Netscape, Inc. and its affiliates. All Rights Reserved.
+ */
 import { describe, test } from "vitest";
+
 import assert from 'node:assert';
 
 describe("basic", () => {

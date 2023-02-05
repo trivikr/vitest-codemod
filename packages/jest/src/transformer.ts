@@ -9,7 +9,14 @@ import {
 const prependImport = (j: JSCodeshift, source: Collection<any>, importDeclaration: ImportDeclaration) => {
   const existingImports = source.find(j.ImportDeclaration)
   if (existingImports.length > 0) {
-    existingImports.at(0).insertBefore(importDeclaration)
+    const firstImport = existingImports.at(0)
+    const firstImportNode = firstImport.nodes()[0]
+    if (firstImportNode?.comments) {
+      importDeclaration.comments = firstImportNode.comments
+      firstImportNode.comments = null
+    }
+
+    firstImport.insertBefore(importDeclaration)
     return
   }
 
