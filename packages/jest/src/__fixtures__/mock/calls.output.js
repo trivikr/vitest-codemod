@@ -1,5 +1,5 @@
 import { expect, test, vi } from "vitest";
-test("mock.calls", () => {
+test("calls", () => {
   const mockFn = vi.fn();
   expect(mockFn.mock.calls).toHaveLength(0);
   

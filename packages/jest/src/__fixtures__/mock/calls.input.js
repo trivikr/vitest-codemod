@@ -1,4 +1,4 @@
-test("mock.calls", () => {
+test("calls", () => {
   const mockFn = jest.fn();
   expect(mockFn.mock.calls).toHaveLength(0);
   
