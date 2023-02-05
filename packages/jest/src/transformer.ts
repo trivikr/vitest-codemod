@@ -2,6 +2,7 @@ import type { API, FileInfo } from 'jscodeshift'
 import {
   getApisFromCallExpression,
   getApisFromMemberExpression,
+  replaceJestObjectWithVi,
   replaceTestApiFailing,
   replaceTestApiFit,
 } from './apis'
@@ -23,6 +24,7 @@ const transformer = async (file: FileInfo, api: API) => {
 
   replaceTestApiFit(j, source)
   replaceTestApiFailing(j, source)
+  replaceJestObjectWithVi(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 

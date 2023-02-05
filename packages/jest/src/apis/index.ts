@@ -1,4 +1,5 @@
 export * from './getApisFromCallExpression'
 export * from './getApisFromMemberExpression'
+export * from './replaceJestObjectWithVi'
 export * from './replaceTestApiFailing'
 export * from './replaceTestApiFit'
