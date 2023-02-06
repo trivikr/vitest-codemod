@@ -1,5 +1,5 @@
 /*
- * Copyright 1994 (c) Netscape, Inc. and its affiliates. All Rights Reserved.
+ * Example comment which should not be replaced.
  */
 
 import { describe, expect, test } from "vitest";
