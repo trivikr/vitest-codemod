@@ -1,5 +1,5 @@
 ---
-"@vitest-codemod/jest": minor
+"@vitest-codemod/jest": patch
 ---
 
 Preserve file comments when adding imports
