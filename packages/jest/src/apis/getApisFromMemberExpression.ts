@@ -8,6 +8,13 @@ const jestGlobalApiProps = {
   test: testApiProps,
 }
 
+const jestApiWithoutProps = ['jest']
+
+const jestToVitestApiMap: Record<string, string> = {
+  fit: 'it',
+  jest: 'vi',
+}
+
 export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<any>): string[] => {
   const apisFromMemberExpression = []
 
@@ -20,10 +27,20 @@ export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<a
     const propNames = [...new Set(propNamesList)]
     for (const propName of propNames) {
       if (jestApiProps.includes(propName)) {
-        apisFromMemberExpression.push(jestApi !== 'fit' ? jestApi : 'it')
+        apisFromMemberExpression.push(jestToVitestApiMap[jestApi] ?? jestApi)
         break
       }
     }
+  }
+
+  for (const jestApiWithoutProp of jestApiWithoutProps) {
+    const jestApiWithoutPropCalls = source.find(j.MemberExpression, {
+      object: { name: jestApiWithoutProp },
+      property: { type: 'Identifier' },
+    })
+
+    if (jestApiWithoutPropCalls.length)
+      apisFromMemberExpression.push(jestToVitestApiMap[jestApiWithoutProp] ?? jestApiWithoutProp)
   }
 
   return apisFromMemberExpression
