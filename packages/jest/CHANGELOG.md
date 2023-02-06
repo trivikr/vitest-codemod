@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.3.0
+
+### Minor Changes
+
+- [#80](https://github.com/trivikr/vitest-codemod/pull/80) [`13fb202`](https://github.com/trivikr/vitest-codemod/commit/13fb2021003c31d31ae104bab5b5f4c0da5762ae) Thanks [@trivikr](https://github.com/trivikr)! - Support transformation of jest API to vi
+
 ## 0.2.0
 
 ### Minor Changes
