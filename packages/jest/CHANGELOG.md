@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.3.1
+
+### Patch Changes
+
+- [#78](https://github.com/trivikr/vitest-codemod/pull/78) [`421dfeb`](https://github.com/trivikr/vitest-codemod/commit/421dfeb7982e1250dd41c9904503ff760d552581) Thanks [@jgoz](https://github.com/jgoz)! - Preserve file comments when adding imports
+
 ## 0.3.0
 
 ### Minor Changes
