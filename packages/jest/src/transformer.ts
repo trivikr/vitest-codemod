@@ -6,6 +6,7 @@ import {
   replaceTestApiFailing,
   replaceTestApiFit,
 } from './apis'
+import { prependImport } from './modules'
 
 const transformer = async (file: FileInfo, api: API) => {
   const j = api.jscodeshift
@@ -19,7 +20,7 @@ const transformer = async (file: FileInfo, api: API) => {
     vitestApis.sort()
     const importSpecifiers = vitestApis.map(apiName => j.importSpecifier(j.identifier(apiName)))
     const importDeclaration = j.importDeclaration(importSpecifiers, j.stringLiteral('vitest'))
-    source.get('program', 'body').unshift(importDeclaration)
+    prependImport(j, source, importDeclaration)
   }
 
   replaceTestApiFit(j, source)
