@@ -1,4 +1,10 @@
-import { expect, it } from "vitest";
-it("toMatchInlineSnapshot", () => {
-  expect("foobar".toUpperCase()).toMatchInlineSnapshot(`"FOOBAR"`);
+import { describe, expect, test } from "vitest";
+describe("toMatchInlineSnapshot", () => {
+  test("string", () => {
+    expect("foobar".toUpperCase()).toMatchInlineSnapshot(`"FOOBAR"`);
+  });
+
+  test("object", () => {
+    expect({ foo: "bar" }).toMatchInlineSnapshot(`\n{\n  "foo": "bar",\n}\n`);
+  });
 });
