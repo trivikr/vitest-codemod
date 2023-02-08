@@ -7,8 +7,12 @@ import {
   replaceTestApiFit,
 } from './apis'
 import { prependImport } from './modules'
+import { getSnapshotWithoutPrototype } from './snapshots'
 
 const transformer = async (file: FileInfo, api: API) => {
+  if (file.path.endsWith('.snap'))
+    return getSnapshotWithoutPrototype(file.source)
+
   const j = api.jscodeshift
   const source = j(file.source)
 
