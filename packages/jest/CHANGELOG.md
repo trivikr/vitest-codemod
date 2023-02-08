@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.3.2
+
+### Patch Changes
+
+- [#87](https://github.com/trivikr/vitest-codemod/pull/87) [`a4aa362`](https://github.com/trivikr/vitest-codemod/commit/a4aa362744ce81b28de8bad37cc86223d2ea7240) Thanks [@trivikr](https://github.com/trivikr)! - Transform Jest snapshots created with printBasicPrototype=true
+
 ## 0.3.1
 
 ### Patch Changes
