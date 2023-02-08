@@ -54,25 +54,28 @@ describe('transformer', () => {
     )
   })
 
-  it('transforms: .snap', async () => {
-    const input = {
-      path: 'test.js.snap',
-      source: `exports\`snapshot 1\`] = \`
+  it.each([
+    [
+      `exports[\`snapshot 1\`] = \`
         Array [
           Object {
             "foo": "bar",
           },
         ]
         \`;`,
-    }
-
-    const outputCode = `exports\`snapshot 1\`] = \`
+      `exports[\`snapshot 1\`] = \`
         [
           {
             "foo": "bar",
           },
         ]
-        \`;`
+        \`;`,
+    ],
+  ])('transforms: .snap', async (inputCode, outputCode) => {
+    const input = {
+      path: 'test.js.snap',
+      source: inputCode,
+    }
 
     const output = await transform(input, {
       j: jscodeshift,
