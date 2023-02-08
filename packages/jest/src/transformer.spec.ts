@@ -58,21 +58,21 @@ describe('transformer', () => {
     const input = {
       path: 'test.js.snap',
       source: `exports\`snapshot 1\`] = \`
-Array [
-  Object {
-    "foo": "bar",
-  },
-]
-\`;`,
+        Array [
+          Object {
+            "foo": "bar",
+          },
+        ]
+        \`;`,
     }
 
     const outputCode = `exports\`snapshot 1\`] = \`
-[
-  {
-    "foo": "bar",
-  },
-]
-\`;`
+        [
+          {
+            "foo": "bar",
+          },
+        ]
+        \`;`
 
     const output = await transform(input, {
       j: jscodeshift,
