@@ -1,7 +1,0 @@
-exports[`snapshot 1`] = `
-[
-  {
-    "foo": "bar",
-  },
-]
-`;

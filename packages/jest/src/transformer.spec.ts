@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 import transform from './transformer'
 
 describe('transformer', () => {
-  const inputFileRegex = /(.*).input.(m?[jt]sx?(.snap)?)$/
+  const inputFileRegex = /(.*).input.m?[jt]sx?$/
   const fixtureDir = join(__dirname, '__fixtures__')
   const fixtureSubDirs = readdirSync(fixtureDir, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
@@ -20,7 +20,7 @@ describe('transformer', () => {
         fileName =>
           [
             (fileName.match(inputFileRegex) as RegExpMatchArray)[1],
-            (fileName.match(inputFileRegex) as RegExpMatchArray)[2],
+            fileName.split('.').pop() as string,
           ] as const,
       )
 
@@ -52,5 +52,35 @@ describe('transformer', () => {
       },
       60000,
     )
+  })
+
+  it('transforms: .snap', async () => {
+    const input = {
+      path: 'test.js.snap',
+      source: `exports\`snapshot 1\`] = \`
+Array [
+  Object {
+    "foo": "bar",
+  },
+]
+\`;`,
+    }
+
+    const outputCode = `exports\`snapshot 1\`] = \`
+[
+  {
+    "foo": "bar",
+  },
+]
+\`;`
+
+    const output = await transform(input, {
+      j: jscodeshift,
+      jscodeshift,
+      stats: () => {},
+      report: () => {},
+    })
+
+    expect(output.trim()).toEqual(outputCode)
   })
 })
