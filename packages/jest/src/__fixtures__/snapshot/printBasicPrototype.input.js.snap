@@ -1,0 +1,7 @@
+exports[`snapshot 1`] = `
+Array [
+  Object {
+    "foo": "bar",
+  },
+]
+`;
