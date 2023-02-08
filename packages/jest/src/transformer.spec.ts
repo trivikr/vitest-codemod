@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 import transform from './transformer'
 
 describe('transformer', () => {
-  const inputFileRegex = /(.*).input.m?[jt]sx?$/
+  const inputFileRegex = /(.*).input.m?[jt]sx?(.snap)?$/
   const fixtureDir = join(__dirname, '__fixtures__')
   const fixtureSubDirs = readdirSync(fixtureDir, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
