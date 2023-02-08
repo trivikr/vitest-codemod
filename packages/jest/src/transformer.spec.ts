@@ -53,4 +53,50 @@ describe('transformer', () => {
       60000,
     )
   })
+
+  describe('.snap', () => {
+    it.each([
+      [
+        'Empty array',
+        'exports[`snapshot 1`] = `Array []`;',
+        'exports[`snapshot 1`] = `[]`;',
+      ],
+      [
+        'Empty object',
+        'exports[`snapshot 1`] = `Object {}`;',
+        'exports[`snapshot 1`] = `{}`;',
+      ],
+      [
+        'Nested array+object',
+        `exports[\`snapshot 1\`] = \`
+          Array [
+            Object {
+              "foo": "bar",
+            },
+          ]
+          \`;`,
+        `exports[\`snapshot 1\`] = \`
+          [
+            {
+              "foo": "bar",
+            },
+          ]
+          \`;`,
+      ],
+    ])('%s', async (testName, inputCode, outputCode) => {
+      const input = {
+        path: 'test.js.snap',
+        source: inputCode,
+      }
+
+      const output = await transform(input, {
+        j: jscodeshift,
+        jscodeshift,
+        stats: () => {},
+        report: () => {},
+      })
+
+      expect(output.trim()).toEqual(outputCode)
+    })
+  })
 })
