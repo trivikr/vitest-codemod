@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`addSnapshotSerializer > toMatchSnapshot > object 1`] = `{"foo":"bar"}`;
+
+exports[`addSnapshotSerializer > toMatchSnapshot > string 1`] = `"FOOBAR"`;

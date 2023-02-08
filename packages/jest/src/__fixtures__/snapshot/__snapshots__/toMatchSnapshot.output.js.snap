@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`toMatchSnapshot > object 1`] = `
+{
+  "createdAt": Any<Date>,
+  "id": Any<Number>,
+  "name": "John Doe",
+}
+`;
+
+exports[`toMatchSnapshot > string 1`] = `"FOOBAR"`;

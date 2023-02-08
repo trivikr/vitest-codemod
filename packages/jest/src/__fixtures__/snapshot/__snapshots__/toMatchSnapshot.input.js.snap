@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toMatchSnapshot object 1`] = `
+{
+  "createdAt": Any<Date>,
+  "id": Any<Number>,
+  "name": "John Doe",
+}
+`;
+
+exports[`toMatchSnapshot string 1`] = `"FOOBAR"`;
