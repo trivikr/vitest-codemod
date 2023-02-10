@@ -13,7 +13,7 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
     ) {
       throw new Error(
         `The automocking API "${path.node.property.name}" is not supported in vitest.\n\n`
-        + 'Please switch to explicit mocking in Jest before running transformation, or'
+        + 'Please switch to explicit mocking in Jest before running transformation, or '
         + 'skip transformation on the files which uses this API.',
       )
     }
