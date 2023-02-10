@@ -26,9 +26,16 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
         path.node.property.name = apiNamesRecord[propertyName]
 
       if (apiNamesToMakeAsync.includes(propertyName)) {
+        // Add await to the call expression
         j(path.parentPath).replaceWith(path =>
           j.awaitExpression(path.value),
         )
+
+        // Add async to the function
+        let parentPath = path.parentPath
+        while (!['FunctionExpression', 'ArrowFunctionExpression'].includes(parentPath.value.type))
+          parentPath = parentPath.parentPath
+        parentPath.value.async = true
       }
     }
 
