@@ -1,5 +1,19 @@
 # @vitest-codemod/jest
 
+## 0.4.0
+
+### Minor Changes
+
+- [#100](https://github.com/trivikr/vitest-codemod/pull/100) [`76a430f`](https://github.com/trivikr/vitest-codemod/commit/76a430f2d001e161e8b4b8f4109e6c13eaeb96ab) Thanks [@trivikr](https://github.com/trivikr)! - Support Jest APIs which change to async in Vitest
+
+### Patch Changes
+
+- [#98](https://github.com/trivikr/vitest-codemod/pull/98) [`8a1a1c6`](https://github.com/trivikr/vitest-codemod/commit/8a1a1c6dde6459ffa531363d5903b84af17ec253) Thanks [@trivikr](https://github.com/trivikr)! - Add transformation for jest.requireMock
+
+- [#95](https://github.com/trivikr/vitest-codemod/pull/95) [`dd88dc7`](https://github.com/trivikr/vitest-codemod/commit/dd88dc78f40b5854429cc439569a8f69220bd8ae) Thanks [@trivikr](https://github.com/trivikr)! - Add transformation for jest.createMockFromModule
+
+- [#99](https://github.com/trivikr/vitest-codemod/pull/99) [`8be7c13`](https://github.com/trivikr/vitest-codemod/commit/8be7c130950e821abed73810acc2c216674bb80d) Thanks [@trivikr](https://github.com/trivikr)! - Add transformation for jest.requireActual
+
 ## 0.3.3
 
 ### Patch Changes
