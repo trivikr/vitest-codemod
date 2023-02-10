@@ -8,6 +8,8 @@ import transform from './transformer'
 
 describe('transformer', () => {
   const inputFileRegex = /(.*).input.m?[jt]sx?$/
+  const errorFileRegex = /(.*).error.m?[jt]sx?$/
+
   const fixtureDir = join(__dirname, '__fixtures__')
   const fixtureSubDirs = readdirSync(fixtureDir, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
@@ -35,6 +37,7 @@ describe('transformer', () => {
 
   describe.each(fixtureSubDirs)('%s', (subDir) => {
     const subDirPath = join(fixtureDir, subDir)
+
     it.concurrent.each(getTestFileMetadata(subDirPath, inputFileRegex))(
       'transforms: %s.%s',
       async (filePrefix, fileExtension) => {
@@ -54,6 +57,23 @@ describe('transformer', () => {
         expect(output.trim()).toEqual(outputCode.trim())
       },
       60000,
+    )
+
+    it.concurrent.each(getTestFileMetadata(subDirPath, errorFileRegex))(
+      'throws: %s.%s',
+      async (filePrefix, fileExtension) => {
+        const inputFileName = [filePrefix, 'error', fileExtension].join('.')
+        const input = await getTestFileInput(subDirPath, inputFileName)
+
+        await expect(
+          transform(input, {
+            j: jscodeshift,
+            jscodeshift,
+            stats: () => {},
+            report: () => {},
+          }),
+        ).rejects.toThrowError()
+      },
     )
   })
 
