@@ -3,4 +3,4 @@
 "vitest-codemod": patch
 ---
 
-Support Jest APIs which become async in Vitest
+Support Jest APIs which change to async in Vitest
