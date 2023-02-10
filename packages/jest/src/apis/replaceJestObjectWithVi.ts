@@ -4,6 +4,7 @@ const unavailableAutomockApis = ['disableAutomock', 'enableAutomock']
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
 }
+const apiNamesToMakeAsync = ['createMockFromModule']
 
 export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>): void => {
   // Replace `jest` with `vi`
@@ -23,6 +24,12 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
 
       if (apiNamesRecord[propertyName])
         path.node.property.name = apiNamesRecord[propertyName]
+
+      if (apiNamesToMakeAsync.includes(propertyName)) {
+        j(path.parentPath).replaceWith(path =>
+          j.awaitExpression(path.value),
+        )
+      }
     }
 
     path.node.object = j.identifier('vi')
