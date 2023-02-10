@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.3.3
+
+### Patch Changes
+
+- [#91](https://github.com/trivikr/vitest-codemod/pull/91) [`bb58f74`](https://github.com/trivikr/vitest-codemod/commit/bb58f7452e2d641cc2a4b2c39128fff43b66e2c2) Thanks [@trivikr](https://github.com/trivikr)! - Throw error on jest automocking APIs
+
 ## 0.3.2
 
 ### Patch Changes
