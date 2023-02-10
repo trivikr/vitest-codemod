@@ -3,9 +3,10 @@ test("toBeCalledWith", () => {
   const mockFn = vi.fn();
   
   mockFn();
-  expect(mockFn).toBeCalledWith();
   mockFn("foo");
-  expect(mockFn).toBeCalledWith("foo");
   mockFn("foo", "bar");
+  
+  expect(mockFn).toBeCalledWith();
+  expect(mockFn).toBeCalledWith("foo");
   expect(mockFn).toBeCalledWith("foo", "bar");
 });
