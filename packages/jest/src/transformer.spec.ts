@@ -13,33 +13,36 @@ describe('transformer', () => {
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
 
-  const getTestFileMetadata = (dirPath: string) =>
+  const getTestFileMetadata = (dirPath: string, fileRegex: RegExp) =>
     readdirSync(dirPath)
-      .filter(fileName => inputFileRegex.test(fileName))
+      .filter(fileName => fileRegex.test(fileName))
       .map(
         fileName =>
           [
-            (fileName.match(inputFileRegex) as RegExpMatchArray)[1],
+            (fileName.match(fileRegex) as RegExpMatchArray)[1],
             fileName.split('.').pop() as string,
           ] as const,
       )
 
-  const getTestMetadata = async (dirPath: string, filePrefix: string, fileExtension: string) => {
-    const inputPath = join(dirPath, [filePrefix, 'input', fileExtension].join('.'))
-    const outputPath = join(dirPath, [filePrefix, 'output', fileExtension].join('.'))
+  const getTestFileInput = async (dirPath: string, fileName: string) => {
+    const inputPath = join(dirPath, fileName)
     const inputCode = await readFile(inputPath, 'utf8')
-    const outputCode = await readFile(outputPath, 'utf8')
-
-    const input = { path: inputPath, source: inputCode }
-    return { input, outputCode }
+    return { path: inputPath, source: inputCode }
   }
+
+  const getTestFileOutputCode = async (dirPath: string, fileName: string) =>
+    readFile(join(dirPath, fileName), 'utf8')
 
   describe.each(fixtureSubDirs)('%s', (subDir) => {
     const subDirPath = join(fixtureDir, subDir)
-    it.concurrent.each(getTestFileMetadata(subDirPath))(
+    it.concurrent.each(getTestFileMetadata(subDirPath, inputFileRegex))(
       'transforms: %s.%s',
       async (filePrefix, fileExtension) => {
-        const { input, outputCode } = await getTestMetadata(subDirPath, filePrefix, fileExtension)
+        const inputFileName = [filePrefix, 'input', fileExtension].join('.')
+        const outputFileName = [filePrefix, 'output', fileExtension].join('.')
+
+        const input = await getTestFileInput(subDirPath, inputFileName)
+        const outputCode = await getTestFileOutputCode(subDirPath, outputFileName)
 
         const output = await transform(input, {
           j: jscodeshift,
