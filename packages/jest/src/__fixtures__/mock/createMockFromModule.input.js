@@ -1,4 +1,4 @@
 test("createMockFromModule", () => {
-  const { getToken } = jest.createMockFromModule("./getToken");
-  expect(getToken._isMockFunction).toBe(true);
+  const { getTokenModule } = jest.createMockFromModule("./getTokenModule");
+  expect(getTokenModule._isMockFunction).toBe(true);
 });
