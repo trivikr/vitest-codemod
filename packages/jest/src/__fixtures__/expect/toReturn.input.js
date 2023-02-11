@@ -7,10 +7,8 @@ test("toReturn", () => {
   } catch (error) {}
   expect(mockFn).not.toReturn();
 
-  const mockReturn = 42;
-  mockFn.mockReturnValue(mockReturn);
-  const mockOutput = mockFn();
-  expect(mockOutput).toBe(mockReturn);
+  mockFn.mockReturnValue(42);
+  mockFn();
   // ToDo: https://github.com/vitest-dev/vitest/issues/2849
   // expect(mockFn).toReturn();
 });
