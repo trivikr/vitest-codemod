@@ -1,9 +1,12 @@
 describe("resolves", () => {
+  const mockData = "data";
+  const dataFn = () => Promise.resolve(mockData);
+
   test("return", () => {
-    return expect(Promise.resolve("lemon")).resolves.toBe("lemon");
+    return expect(dataFn()).resolves.toBe(mockData);
   });
 
   test("await", async () => {
-    await expect(Promise.resolve("lemon")).resolves.toBe("lemon");
+    await expect(dataFn()).resolves.toBe(mockData);
   });
 });
