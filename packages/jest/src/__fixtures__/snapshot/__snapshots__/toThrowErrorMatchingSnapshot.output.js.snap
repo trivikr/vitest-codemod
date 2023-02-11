@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`toThrowErrorMatchingSnapshot > hint 1`] = `"error with hint"`;
+
+exports[`toThrowErrorMatchingSnapshot 1`] = `"error"`;

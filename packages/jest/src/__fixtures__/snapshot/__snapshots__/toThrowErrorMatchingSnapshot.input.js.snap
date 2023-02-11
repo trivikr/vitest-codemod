@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toThrowErrorMatchingSnapshot 1`] = `"error"`;
+
+exports[`toThrowErrorMatchingSnapshot: hint 1`] = `"error with hint"`;
