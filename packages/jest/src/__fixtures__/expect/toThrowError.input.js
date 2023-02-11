@@ -18,6 +18,6 @@ test("toThrowError", () => {
   expect(throwFn).toThrowError(/^foo bar baz$/);
   expect(throwFn).toThrowError(new Error("foo bar baz"));
 
-  // Test that we get a DisgustingFlavorError
+  // Test that we get a CustomError
   expect(throwFn).toThrowError(CustomError);
 });
