@@ -1,0 +1,17 @@
+import { expect, test, vi } from "vitest";
+test("toReturnTimes", () => {
+  const mockError = new Error("mockError");
+  const mockFn = vi.fn(() => { throw mockError; });
+
+  try {
+    mockFn();
+  } catch (error) {}
+  expect(mockFn).toReturnTimes(0);
+  
+  mockFn.mockReturnValue(42);
+
+  mockFn();
+  expect(mockFn).toReturnTimes(1);
+  mockFn();
+  expect(mockFn).toReturnTimes(2);
+});
