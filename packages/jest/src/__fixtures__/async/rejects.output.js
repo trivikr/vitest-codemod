@@ -1,10 +1,13 @@
 import { describe, expect, test } from "vitest";
 describe("rejects", () => {
+  const mockError = new Error("error");
+  const errorFn = () => Promise.reject(mockError);
+
   test("return", () => {
-    return expect(Promise.reject(new Error("error"))).rejects.toThrow("error");
+    return expect(errorFn()).rejects.toThrow(mockError);
   });
 
   test("await", async () => {
-    await expect(Promise.reject(new Error("error"))).rejects.toThrow("error");
+    await expect(errorFn()).rejects.toThrow(mockError);
   });
 });
