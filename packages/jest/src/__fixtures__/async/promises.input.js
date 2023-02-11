@@ -1,7 +1,7 @@
 describe("promises", () => {
   describe("data", () => {
     const mockData = "data";
-    const dataFn = () => Promise.resolve(mockData);
+    const dataFn = async () => mockData;
 
     test("return", () => {
       return dataFn().then((data) => {
@@ -18,7 +18,7 @@ describe("promises", () => {
 
   describe("error", () => {
     const mockError = new Error("error");
-    const errorFn = () => Promise.reject(mockError);
+    const errorFn = async () => { throw mockError; };
 
     test("return", () => {
       return errorFn().catch((error) => {

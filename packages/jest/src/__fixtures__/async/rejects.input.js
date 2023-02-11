@@ -1,6 +1,6 @@
 describe("rejects", () => {
   const mockError = new Error("error");
-  const errorFn = () => Promise.reject(mockError);
+  const errorFn = async () => { throw mockError; };
 
   test("return", () => {
     return expect(errorFn()).rejects.toThrow(mockError);

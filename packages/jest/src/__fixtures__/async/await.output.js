@@ -2,7 +2,8 @@ import { describe, expect, test } from "vitest";
 describe("await", () => {
   test("data", async () => {
     const mockData = "data";
-    const dataFn = () => Promise.resolve(mockData);
+    const dataFn = async () => mockData;
+
     const data = await dataFn();
     expect(data).toBe(mockData);
   });
@@ -10,7 +11,7 @@ describe("await", () => {
   test("error", async () => {
     expect.assertions(1);
     const mockError = new Error("error");
-    const errorFn = () => Promise.reject(mockError);
+    const errorFn = async () => { throw mockError; };
 
     try {
       await errorFn();
