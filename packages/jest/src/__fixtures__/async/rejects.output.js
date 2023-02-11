@@ -1,4 +1,10 @@
-import { expect, test } from "vitest";
-test("rejects", () => {
-  return expect(Promise.reject(new Error("error"))).rejects.toThrow("error");
+import { describe, expect, test } from "vitest";
+describe("rejects", () => {
+  test("return", () => {
+    return expect(Promise.reject(new Error("error"))).rejects.toThrow("error");
+  });
+
+  test("await", async () => {
+    await expect(Promise.reject(new Error("error"))).rejects.toThrow("error");
+  });
 });
