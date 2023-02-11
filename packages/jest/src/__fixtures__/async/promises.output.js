@@ -19,16 +19,16 @@ describe("promises", () => {
 
   describe("error", () => {
     const mockError = new Error("error");
-    const dataFn = () => Promise.reject(mockError);
+    const errorFn = () => Promise.reject(mockError);
 
     test("return", () => {
-      return dataFn().catch((error) => {
+      return errorFn().catch((error) => {
         expect(error).toBe(mockError);
       });
     });
 
     test("await", async () => {
-      await dataFn().catch((error) => {
+      await errorFn().catch((error) => {
         expect(error).toBe(mockError);
       });
     });
