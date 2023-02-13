@@ -1,4 +1,5 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
+import { print } from 'recast'
 
 const unavailableAutomockApis = ['enableAutomock']
 const apiNamesRecord: Record<string, string> = {
@@ -28,6 +29,7 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
         const comments = path.node.comments || []
         comments.push(j.commentLine(' Vitest does not automock by default https://vitest.dev/guide/migration.html'))
         comments.push(j.commentLine(' Explicit call to disable automock below can be deleted.'))
+        comments.push(j.commentLine(` ${print(path.node).code}`))
         path.node.comments = comments
         return
       }
