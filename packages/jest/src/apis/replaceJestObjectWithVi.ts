@@ -1,6 +1,6 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
 
-const unavailableAutomockApis = ['disableAutomock', 'enableAutomock']
+const unavailableAutomockApis = ['enableAutomock']
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
   requireActual: 'importActual',
@@ -22,6 +22,14 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
           + 'Please switch to explicit mocking in Jest before running transformation, or '
           + 'skip transformation on the files which uses this API.',
         )
+      }
+
+      if (propertyName === 'disableAutomock') {
+        const comments = path.node.comments || []
+        comments.push(j.commentLine(' Vitest does not automock by default https://vitest.dev/guide/migration.html'))
+        comments.push(j.commentLine(' Explicit call to disable automock below can be deleted.'))
+        path.node.comments = comments
+        return
       }
 
       if (apiNamesRecord[propertyName])
