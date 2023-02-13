@@ -10,6 +10,5 @@ test("toReturn", () => {
 
   mockFn.mockReturnValue(42);
   mockFn();
-  // ToDo: https://github.com/vitest-dev/vitest/issues/2849
-  // expect(mockFn).toReturn();
+  expect(mockFn).toReturn();
 });
