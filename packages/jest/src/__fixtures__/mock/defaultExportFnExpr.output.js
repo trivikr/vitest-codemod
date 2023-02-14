@@ -1,6 +1,8 @@
 import { expect, test, vi } from "vitest";
 vi.mock("./defaultExport", function() {
-  return { default: "defaultFromMock" };
+  return {
+    default: "defaultFromMock"
+  };
 });
 
 test("mockDefault", async () => {

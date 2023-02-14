@@ -1,5 +1,8 @@
 import { dirname, join, resolve } from 'path'
-import type { Collection, JSCodeshift } from 'jscodeshift'
+import type {
+  ArrowFunctionExpression, Collection, FunctionExpression,
+  Identifier, JSCodeshift, ObjectProperty,
+} from 'jscodeshift'
 
 export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>, filePath: string) => {
   source.find(j.CallExpression, {
@@ -34,7 +37,7 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
       const mockBody = mock.body
       if (
         mockBody.type === 'ObjectExpression'
-        && mockBody.properties.map(p => p.key.name).includes('default')
+        && mockBody.properties.map(p => ((p as ObjectProperty).key as Identifier).name).includes('default')
       )
         return
 
@@ -42,6 +45,24 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
         mock.body = j.objectExpression([
           j.property('init', j.identifier('default'), mockBody),
         ])
+        return
+      }
+    }
+
+    const mockBody = (mock as FunctionExpression | ArrowFunctionExpression).body
+    if (mockBody.type === 'BlockStatement') {
+      const returnStatement = mockBody.body[mockBody.body.length - 1]
+      if (returnStatement.type === 'ReturnStatement') {
+        const returnArgument = returnStatement.argument
+        if (returnArgument) {
+          if (
+            returnArgument.type === 'ObjectExpression'
+            && returnArgument.properties.map(p => ((p as ObjectProperty).key as Identifier).name).includes('default'))
+            return
+          returnStatement.argument = j.objectExpression([
+            j.property('init', j.identifier('default'), returnArgument),
+          ])
+        }
       }
     }
   })
