@@ -5,6 +5,7 @@ import {
   replaceJestObjectWithVi,
   replaceTestApiFailing,
   replaceTestApiFit,
+  updateDefaultExportMocks,
 } from './apis'
 import { prependImport } from './modules'
 import { getSnapshotWithoutPrototype } from './snapshots'
@@ -30,6 +31,7 @@ const transformer = async (file: FileInfo, api: API) => {
   replaceTestApiFit(j, source)
   replaceTestApiFailing(j, source)
   replaceJestObjectWithVi(j, source)
+  updateDefaultExportMocks(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 
