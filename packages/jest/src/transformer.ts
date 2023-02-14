@@ -1,5 +1,6 @@
 import type { API, FileInfo } from 'jscodeshift'
 import {
+  addFactoryFunctionToMock,
   getApisFromCallExpression,
   getApisFromMemberExpression,
   replaceJestObjectWithVi,
@@ -30,8 +31,10 @@ const transformer = async (file: FileInfo, api: API) => {
 
   replaceTestApiFit(j, source)
   replaceTestApiFailing(j, source)
-  replaceJestObjectWithVi(j, source)
+
+  addFactoryFunctionToMock(j, source)
   updateDefaultExportMocks(j, source, file.path)
+  replaceJestObjectWithVi(j, source)
 
   source.find(j.ImportDeclaration, { source: { value: '@jest/globals' } }).remove()
 

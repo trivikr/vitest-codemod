@@ -5,6 +5,7 @@ const apiNamesRecord: Record<string, string> = {
   genMockFromModule: 'importMock',
   requireActual: 'importActual',
   requireMock: 'importMock',
+  setMock: 'mock',
 }
 const apiNamesToMakeAsync = ['genMockFromModule', 'createMockFromModule', 'requireActual', 'requireMock']
 

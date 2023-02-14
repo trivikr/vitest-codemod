@@ -1,16 +1,19 @@
 import { dirname, join, resolve } from 'path'
 import type {
   ArrowFunctionExpression, Collection, FunctionExpression,
-  Identifier, JSCodeshift, ObjectProperty,
+  Identifier, JSCodeshift, MemberExpression, ObjectProperty,
 } from 'jscodeshift'
 
 export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>, filePath: string) => {
   source.find(j.CallExpression, {
     callee: {
-      object: { type: 'Identifier', name: 'vi' },
-      property: { type: 'Identifier', name: 'mock' },
+      type: 'MemberExpression',
+      object: { type: 'Identifier', name: 'jest' },
+      property: { type: 'Identifier' },
     },
-  }).forEach((path) => {
+  }).filter(path => ['mock', 'setMock'].includes(
+    ((path.value.callee as MemberExpression).property as Identifier).name,
+  )).forEach((path) => {
     const { arguments: args } = path.value
 
     if (args.length < 2)
