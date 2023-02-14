@@ -1,6 +1,6 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
 
-const unavailableAutomockApis = ['disableAutomock', 'enableAutomock']
+const unavailableAutomockApis = ['enableAutomock']
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
   requireActual: 'importActual',
@@ -22,6 +22,11 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
           + 'Please switch to explicit mocking in Jest before running transformation, or '
           + 'skip transformation on the files which uses this API.',
         )
+      }
+
+      if (propertyName === 'disableAutomock') {
+        j(path.parentPath).remove()
+        return
       }
 
       if (apiNamesRecord[propertyName])

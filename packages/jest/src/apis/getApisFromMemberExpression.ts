@@ -8,8 +8,6 @@ const jestGlobalApiProps = {
   test: testApiProps,
 }
 
-const jestApiWithoutProps = ['jest']
-
 const jestToVitestApiMap: Record<string, string> = {
   fit: 'it',
   jest: 'vi',
@@ -33,15 +31,14 @@ export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<a
     }
   }
 
-  for (const jestApiWithoutProp of jestApiWithoutProps) {
-    const jestApiWithoutPropCalls = source.find(j.MemberExpression, {
-      object: { name: jestApiWithoutProp },
-      property: { type: 'Identifier' },
-    })
+  const jestObjectName = 'jest'
+  const jestObjectApiCalls = source.find(j.MemberExpression, {
+    object: { name: jestObjectName },
+    property: { type: 'Identifier' },
+  }).filter(path => (path.node.property as Identifier).name !== 'disableAutomock')
 
-    if (jestApiWithoutPropCalls.length)
-      apisFromMemberExpression.push(jestToVitestApiMap[jestApiWithoutProp] ?? jestApiWithoutProp)
-  }
+  if (jestObjectApiCalls.length)
+    apisFromMemberExpression.push(jestToVitestApiMap[jestObjectName] ?? jestObjectName)
 
   return apisFromMemberExpression
 }
