@@ -1,5 +1,5 @@
 import { dirname, join, resolve } from 'path'
-import type { ArrowFunctionExpression, Collection, FunctionExpression, JSCodeshift } from 'jscodeshift'
+import type { Collection, JSCodeshift } from 'jscodeshift'
 
 export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>, filePath: string) => {
   source.find(j.CallExpression, {
@@ -17,7 +17,6 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
 
     if (!['ArrowFunctionExpression', 'FunctionExpression'].includes(mock.type))
       return
-    const functionMock = mock as ArrowFunctionExpression | FunctionExpression
 
     if (moduleName.type !== 'Literal' && moduleName.type !== 'StringLiteral')
       return
@@ -31,17 +30,19 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
     if (typeof module === 'object')
       return
 
-    const functionMockBody = functionMock.body
-    if (
-      functionMockBody.type === 'ObjectExpression'
-      && functionMockBody.properties.map(p => p.key.name).includes('default')
-    )
-      return
+    if (mock.type === 'ArrowFunctionExpression') {
+      const mockBody = mock.body
+      if (
+        mockBody.type === 'ObjectExpression'
+        && mockBody.properties.map(p => p.key.name).includes('default')
+      )
+        return
 
-    if (functionMockBody.type !== 'BlockStatement') {
-      functionMock.body = j.objectExpression([
-        j.property('init', j.identifier('default'), functionMockBody),
-      ])
+      if (mockBody.type !== 'BlockStatement') {
+        mock.body = j.objectExpression([
+          j.property('init', j.identifier('default'), mockBody),
+        ])
+      }
     }
   })
 }
