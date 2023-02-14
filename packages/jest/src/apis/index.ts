@@ -1,3 +1,4 @@
+export * from './addFactoryFunctionToMock'
 export * from './getApisFromCallExpression'
 export * from './getApisFromMemberExpression'
 export * from './replaceJestObjectWithVi'
