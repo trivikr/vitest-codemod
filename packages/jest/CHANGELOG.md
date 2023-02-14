@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.4.2
+
+### Patch Changes
+
+- [#116](https://github.com/trivikr/vitest-codemod/pull/116) [`b75bfe1`](https://github.com/trivikr/vitest-codemod/commit/b75bfe19722e4b4f2d8ba683caac1e380443daa8) Thanks [@trivikr](https://github.com/trivikr)! - Support transformation of default exports
+
 ## 0.4.1
 
 ### Patch Changes
