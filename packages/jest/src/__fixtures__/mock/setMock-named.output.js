@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 test("setMock", async () => {
   vi.mock("./getToken", () => ({
-    getToken: () => "tokenFromFactory",
+    getToken: () => "tokenFromFactory"
   }));
 
   const { getToken } = await import("./getToken");

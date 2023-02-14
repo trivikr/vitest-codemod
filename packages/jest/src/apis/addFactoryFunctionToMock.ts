@@ -7,6 +7,14 @@ export const addFactoryFunctionToMock = (j: JSCodeshift, source: Collection<any>
       property: { type: 'Identifier', name: 'setMock' },
     },
   }).forEach((path) => {
+    const { arguments: args } = path.value
 
+    if (args.length < 2)
+      return
+
+    const moduleExport = args[1]
+
+    // @ts-expect-error - moduleExport is usually ObjectExpression
+    args[1] = j.arrowFunctionExpression([], moduleExport)
   })
 }
