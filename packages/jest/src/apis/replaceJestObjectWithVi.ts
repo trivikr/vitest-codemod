@@ -2,10 +2,11 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
 
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
+  genMockFromModule: 'importMock',
   requireActual: 'importActual',
   requireMock: 'importMock',
 }
-const apiNamesToMakeAsync = ['createMockFromModule', 'requireActual', 'requireMock']
+const apiNamesToMakeAsync = ['genMockFromModule', 'createMockFromModule', 'requireActual', 'requireMock']
 
 export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>): void => {
   // Replace `jest` with `vi`
