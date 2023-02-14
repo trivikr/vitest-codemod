@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.4.4
+
+### Patch Changes
+
+- [#122](https://github.com/trivikr/vitest-codemod/pull/122) [`a4dc312`](https://github.com/trivikr/vitest-codemod/commit/a4dc3123c689b5c0a3a4f675b3f834b57da73a75) Thanks [@trivikr](https://github.com/trivikr)! - Support transformation for jest.setMock
+
 ## 0.4.3
 
 ### Patch Changes
