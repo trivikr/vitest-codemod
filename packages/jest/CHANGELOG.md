@@ -1,5 +1,13 @@
 # @vitest-codemod/jest
 
+## 0.4.1
+
+### Patch Changes
+
+- [#115](https://github.com/trivikr/vitest-codemod/pull/115) [`66c860c`](https://github.com/trivikr/vitest-codemod/commit/66c860cd02582f3fe33087a7aec963cc135f53ae) Thanks [@trivikr](https://github.com/trivikr)! - Add link to migration guide in the error on jest.enableAutomock()
+
+- [#113](https://github.com/trivikr/vitest-codemod/pull/113) [`8c28866`](https://github.com/trivikr/vitest-codemod/commit/8c28866f877daa9c4aa9b06ef4c2a071bc22ada4) Thanks [@trivikr](https://github.com/trivikr)! - Delete jest.disableAutomock() as vitest does not mock by default
+
 ## 0.4.0
 
 ### Minor Changes
