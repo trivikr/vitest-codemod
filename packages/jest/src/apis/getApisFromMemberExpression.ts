@@ -31,13 +31,14 @@ export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<a
     }
   }
 
+  const jestObjectName = 'jest'
   const jestObjectApiCalls = source.find(j.MemberExpression, {
-    object: { name: 'jest' },
+    object: { name: jestObjectName },
     property: { type: 'Identifier' },
   }).filter(path => (path.node.property as Identifier).name !== 'disableAutomock')
 
   if (jestObjectApiCalls.length)
-    apisFromMemberExpression.push('vi')
+    apisFromMemberExpression.push(jestToVitestApiMap[jestObjectName] ?? jestObjectName)
 
   return apisFromMemberExpression
 }
