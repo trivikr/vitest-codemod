@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.4.3
+
+### Patch Changes
+
+- [#118](https://github.com/trivikr/vitest-codemod/pull/118) [`3101933`](https://github.com/trivikr/vitest-codemod/commit/3101933710c43f14029dd5878bb453c8057c639b) Thanks [@trivikr](https://github.com/trivikr)! - Add transformation for jest.genMockFromModule
+
 ## 0.4.2
 
 ### Patch Changes
