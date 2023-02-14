@@ -7,8 +7,8 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
       object: { type: 'Identifier', name: 'vi' },
       property: { type: 'Identifier', name: 'mock' },
     },
-  }).forEach(async (path) => {
-    const { arguments: args } = path.node
+  }).forEach((path) => {
+    const { arguments: args } = path.value
 
     if (args.length < 2)
       return
@@ -25,9 +25,10 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
     // @ts-expect-error - moduleName is a Literal/StringLiteral
     const modulePath = resolve(join(dirname(filePath), moduleName.value))
 
-    const module = await import(modulePath)
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const module = require(modulePath)
 
-    if (typeof module.default === 'object')
+    if (typeof module === 'object')
       return
 
     const functionMockBody = functionMock.body
