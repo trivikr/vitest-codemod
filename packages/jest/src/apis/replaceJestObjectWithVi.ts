@@ -1,6 +1,5 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
 
-const unavailableAutomockApis = ['enableAutomock']
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
   requireActual: 'importActual',
@@ -16,11 +15,10 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
     if (path.node.property.type === 'Identifier') {
       const propertyName = path.node.property.name
 
-      if (unavailableAutomockApis.includes(propertyName)) {
+      if (propertyName === 'enableAutomock') {
         throw new Error(
-          `The automocking API "${propertyName}" is not supported in vitest.\n\n`
-          + 'Please switch to explicit mocking in Jest before running transformation, or '
-          + 'skip transformation on the files which uses this API.',
+          `The automocking API "${propertyName}" is not supported in vitest.\n`
+          + 'See https://vitest.dev/guide/migration.html',
         )
       }
 
