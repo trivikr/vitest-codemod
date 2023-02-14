@@ -7,7 +7,7 @@ import type {
 export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>, filePath: string) => {
   source.find(j.CallExpression, {
     callee: {
-      object: { type: 'Identifier', name: 'vi' },
+      object: { type: 'Identifier', name: 'jest' },
       property: { type: 'Identifier', name: 'mock' },
     },
   }).forEach((path) => {
