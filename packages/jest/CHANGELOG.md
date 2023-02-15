@@ -1,5 +1,11 @@
 # @vitest-codemod/jest
 
+## 0.4.5
+
+### Patch Changes
+
+- [#124](https://github.com/trivikr/vitest-codemod/pull/124) [`8a5b795`](https://github.com/trivikr/vitest-codemod/commit/8a5b795c3b3f746dcf7e822b06ac59a4d9087d5a) Thanks [@trivikr](https://github.com/trivikr)! - Add transformation for jest.deepUnmock
+
 ## 0.4.4
 
 ### Patch Changes
