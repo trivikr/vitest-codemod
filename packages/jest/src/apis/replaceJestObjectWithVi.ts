@@ -2,6 +2,7 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
 
 const apiNamesRecord: Record<string, string> = {
   createMockFromModule: 'importMock',
+  deepUnmock: 'unmock',
   genMockFromModule: 'importMock',
   requireActual: 'importActual',
   requireMock: 'importMock',
