@@ -5,7 +5,7 @@
   "packageManager": "yarn@3.4.1",
   "description": "Monorepo for vitest-codemod scripts",
   "scripts": {
-    "build": "yarn workspaces foreach --topological-dev --verbose run build",
+    "g:build": "yarn workspaces foreach --topological-dev --verbose run build",
     "g:tsc": "cd $INIT_CWD && tsc -p tsconfig.build.json",
     "g:vitest": "cd $INIT_CWD && vitest",
     "lint": "eslint 'packages/**/*.{js,ts,json,md}'",
