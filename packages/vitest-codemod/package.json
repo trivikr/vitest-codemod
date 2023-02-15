@@ -29,8 +29,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "build": "yarn g:tsc",
-    "test": "exit 0"
+    "build": "yarn g:tsc"
   },
   "dependencies": {
     "@vitest-codemod/jest": "^0.4.0",
