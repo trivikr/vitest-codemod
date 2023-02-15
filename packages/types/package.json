@@ -19,7 +19,6 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "build": "yarn g:tsc",
-    "test": "exit 0"
+    "build": "yarn g:tsc"
   }
 }
