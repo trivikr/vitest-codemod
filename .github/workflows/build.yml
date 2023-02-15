@@ -18,6 +18,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: yarn
-      - run: yarn lint
+      - run: yarn g:lint
       - run: yarn g:build
       - run: yarn g:test
