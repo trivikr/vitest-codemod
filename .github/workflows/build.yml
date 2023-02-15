@@ -20,4 +20,4 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn g:build
-      - run: yarn test
+      - run: yarn g:test
