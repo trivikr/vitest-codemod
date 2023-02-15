@@ -13,7 +13,7 @@ describe("mockReset", () => {
     module.api.mockReset();
     expect(module.api).toHaveBeenCalledTimes(0);
 
-    // Bug in jest: https://github.com/facebook/jest/issues/13808
+    // Bug in jest: https://github.com/facebook/jest/issues/13916
     // expect(module.api()).toStrictEqual(undefined);
   });
 
