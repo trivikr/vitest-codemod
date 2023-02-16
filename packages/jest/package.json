@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "yarn g:tsc",
-    "test:jest": "yarn node --experimental-vm-modules $(yarn bin jest)",
+    "test:jest": "yarn node --experimental-vm-modules $(yarn bin jest) --logHeapUsage",
     "test": "yarn test:jest && yarn g:vitest"
   },
   "dependencies": {
