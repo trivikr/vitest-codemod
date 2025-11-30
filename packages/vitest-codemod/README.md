@@ -29,8 +29,6 @@ To use vitest-codemod, please install [Node.js][install-nodejs].
 
 ## Transformations
 
-The Jest to Vitest codemod performs the following transformations:
-
 ### API Replacements
 
 - `jest` → `vi` (global object)
@@ -116,9 +114,10 @@ const actual = await vi.importActual('./utils');
 Some patterns may require manual adjustment after running the codemod:
 
 - `jest.isolateModules()` - Converted to `vi.resetModules()` but may need manual review
-- `jest.enableAutomock()` - Not supported in Vitest (throws error)
+- `jest.enableAutomock()` - Not supported in Vitest
 - Complex mock setups with variable hoisting may need `vi.hoisted()`
 - Timer mocks may need adjustment for Vitest's API differences
+- Default export detection uses `require()` at transform time, which executes module code
 
 ## License
 

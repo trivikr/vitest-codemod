@@ -6,14 +6,14 @@ const jestTypeMap: Record<string, string> = {
   MockedFunction: 'MockedFunction',
   MockedClass: 'MockedClass',
   MockedObject: 'MockedObject',
-  SpyInstance: 'SpyInstance',
+  SpyInstance: 'MockInstance',
 }
 
 /**
  * Replaces Jest type references with Vitest equivalents
  * e.g., `jest.Mock` -> `Mock`, `jest.Mocked<T>` -> `Mocked<T>`
  */
-export const replaceJestTypes = (j: JSCodeshift, source: Collection<any>): string[] => {
+export function replaceJestTypes(j: JSCodeshift, source: Collection<any>): string[] {
   const typesToImport: Set<string> = new Set()
 
   // Find all TSTypeReference nodes that reference jest.X

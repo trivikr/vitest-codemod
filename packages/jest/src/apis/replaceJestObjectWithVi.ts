@@ -56,7 +56,7 @@ export function replaceJestObjectWithVi(j: JSCodeshift, source: Collection<any>)
 
           // Find the statement containing this call
           let statementPath = path.parentPath
-          while (statementPath && statementPath.value.type !== 'ExpressionStatement' && statementPath.value.type !== 'AwaitExpression')
+          while (statementPath && !['ExpressionStatement', 'AwaitExpression'].includes(statementPath.value.type))
             statementPath = statementPath.parentPath
 
           // If the call is wrapped in await, we need to handle the AwaitExpression
