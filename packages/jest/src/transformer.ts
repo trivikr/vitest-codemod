@@ -1,13 +1,11 @@
 import type { API, FileInfo } from 'jscodeshift'
 import {
   addFactoryFunctionToMock,
-  addImportOriginalToMocks,
   convertMockImplementationToFunction,
   convertRequireToImport,
   deduplicateViMocks,
   getApisFromCallExpression,
   getApisFromMemberExpression,
-  hoistMockVariables,
   replaceJestObjectWithVi,
   replaceJestTypes,
   replaceTestApiFailing,
@@ -17,7 +15,7 @@ import {
 import { prependImport } from './modules'
 import { getSnapshotWithoutPrototype } from './snapshots'
 
-const transformer = async (file: FileInfo, api: API) => {
+async function transformer(file: FileInfo, api: API) {
   if (file.path.endsWith('.snap'))
     return getSnapshotWithoutPrototype(file.source)
 
@@ -45,15 +43,8 @@ const transformer = async (file: FileInfo, api: API) => {
   convertMockImplementationToFunction(j, source)
   replaceJestObjectWithVi(j, source)
 
-  // Hoist mock variables to avoid "cannot access before initialization" errors
-  // This must run AFTER replaceJestObjectWithVi so we can find vi.mock calls
-  hoistMockVariables(j, source)
-
   // Remove duplicate mock calls (keep factory mocks, remove empty mocks for same module)
   deduplicateViMocks(j, source)
-
-  // Add importOriginal to partial mocks to preserve all exports
-  addImportOriginalToMocks(j, source)
 
   // Convert require() calls to dynamic import() for mocked modules
   convertRequireToImport(j, source)

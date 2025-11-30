@@ -16,8 +16,10 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
  *   vi.mocked(Table).mockImplementation(function() { return { push: vi.fn() }; })
  *   vi.mocked(Table).mockImplementation(function() { return table; })
  */
-export const convertMockImplementationToFunction = (j: JSCodeshift, source: Collection<any>) => {
-  // Find mockImplementation and mockImplementationOnce calls
+export function convertMockImplementationToFunction(j: JSCodeshift, source: Collection<any>) {
+  // Find mockImplementation and mockImplementationOnce calls on vi.mocked() ONLY
+  // We only convert arrow functions to regular functions when mocking constructors
+  // (i.e., when using vi.mocked()), since arrow functions aren't constructable with `new`
   source.find(j.CallExpression, {
     callee: {
       type: 'MemberExpression',
@@ -25,7 +27,21 @@ export const convertMockImplementationToFunction = (j: JSCodeshift, source: Coll
     },
   }).filter((path) => {
     const propName = (path.value.callee as any).property?.name
-    return propName === 'mockImplementation' || propName === 'mockImplementationOnce'
+    if (propName !== 'mockImplementation' && propName !== 'mockImplementationOnce')
+      return false
+
+    // Only convert for vi.mocked() or jest.mocked() calls
+    const obj = (path.value.callee as any).object
+    if (obj?.type !== 'CallExpression')
+      return false
+
+    const callee = obj.callee
+    if (callee?.type !== 'MemberExpression')
+      return false
+
+    const objName = callee.object?.name
+    const methodName = callee.property?.name
+    return (objName === 'vi' || objName === 'jest') && methodName === 'mocked'
   }).forEach((path) => {
     const args = path.value.arguments
 

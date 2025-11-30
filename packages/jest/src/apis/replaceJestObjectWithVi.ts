@@ -5,17 +5,14 @@ const apiNamesRecord: Record<string, string> = {
   deepUnmock: 'unmock',
   genMockFromModule: 'importMock',
   requireActual: 'importActual',
-  // Note: requireMock maps to a dynamic import, not vi.importMock (which doesn't exist)
-  // The transformation is handled specially below
+  requireMock: 'importMock',
   setMock: 'mock',
 }
-const apiNamesToMakeAsync = ['genMockFromModule', 'createMockFromModule', 'requireActual']
-// requireMock needs special handling - convert to dynamic import
-const requireMockApis = ['requireMock']
+const apiNamesToMakeAsync = ['genMockFromModule', 'createMockFromModule', 'requireActual', 'requireMock']
 // isolateModules needs special handling - convert to vi.resetModules() + inline callback
 const isolateModulesApis = ['isolateModules']
 
-export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>): void => {
+export function replaceJestObjectWithVi(j: JSCodeshift, source: Collection<any>): void {
   // Replace `jest` with `vi`
   source.find(j.MemberExpression, {
     object: { type: 'Identifier', name: 'jest' },
@@ -32,26 +29,6 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
 
       if (propertyName === 'disableAutomock') {
         j(path.parentPath).remove()
-        return
-      }
-
-      // Special handling for requireMock - convert to dynamic import
-      // jest.requireMock('module') -> await import('module')
-      if (requireMockApis.includes(propertyName)) {
-        const callExpr = path.parentPath.value
-        if (callExpr.type === 'CallExpression' && callExpr.arguments.length > 0) {
-          const moduleArg = callExpr.arguments[0]
-          // Replace jest.requireMock('module') with import('module')
-          const importCall = j.callExpression(j.identifier('import'), [moduleArg])
-          j(path.parentPath).replaceWith(j.awaitExpression(importCall))
-
-          // Add async to the function
-          let parentPath = path.parentPath
-          while (parentPath && !['FunctionExpression', 'ArrowFunctionExpression', 'FunctionDeclaration'].includes(parentPath.value?.type))
-            parentPath = parentPath.parentPath
-          if (parentPath?.value)
-            parentPath.value.async = true
-        }
         return
       }
 

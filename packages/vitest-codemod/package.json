@@ -32,8 +32,8 @@
     "build": "yarn g:tsc"
   },
   "dependencies": {
-    "@vitest-codemod/jest": "^0.4.0",
-    "jscodeshift": "0.14.0"
+    "@vitest-codemod/jest": "^0.4.5",
+    "jscodeshift": "0.16.1"
   },
   "devDependencies": {
     "@vitest-codemod/types": "^0.0.3"
