@@ -3,8 +3,8 @@ import { getTransformDescription } from './getTransformDescription'
 
 const separator = '-'.repeat(95)
 
-export const getHelpParagraph = (transforms: VitestCodemodTransform[]) =>
-  `${separator}
+export function getHelpParagraph(transforms: VitestCodemodTransform[]) {
+  return `${separator}
 vitest-codemod is a lightweight wrapper over jscodeshift.
 It processes --help, --version and --transform options before passing them downstream.
 
@@ -17,3 +17,4 @@ Example: vitest-codemod -t jest example.spec.js
 To use the latest version of vitest-codemod, please clear your npx cache and re-run.
 
 ${separator}\n\n`
+}

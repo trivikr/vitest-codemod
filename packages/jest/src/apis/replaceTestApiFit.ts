@@ -1,6 +1,6 @@
 import type { Collection, JSCodeshift } from 'jscodeshift'
 
-export const replaceTestApiFit = (j: JSCodeshift, source: Collection<any>): void => {
+export function replaceTestApiFit(j: JSCodeshift, source: Collection<any>): void {
   const jestApiName = 'fit'
   const vitestApiObject = j.memberExpression(j.identifier('it'), j.identifier('only'))
 

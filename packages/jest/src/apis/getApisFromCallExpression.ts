@@ -2,7 +2,7 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
 
 const jestGlobalApis = ['afterAll', 'afterEach', 'beforeAll', 'beforeEach', 'describe', 'test', 'it', 'fit', 'expect']
 
-export const getApisFromCallExpression = (j: JSCodeshift, source: Collection<any>): string[] => {
+export function getApisFromCallExpression(j: JSCodeshift, source: Collection<any>): string[] {
   const apisFromCallExpression = []
 
   for (const jestGlobalApi of jestGlobalApis) {

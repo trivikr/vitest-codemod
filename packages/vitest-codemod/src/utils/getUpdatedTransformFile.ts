@@ -1,2 +1,3 @@
-export const getUpdatedTransformFile = (transformName: string) =>
-  require.resolve(`@vitest-codemod/${transformName}/dist/transformer.js`)
+export function getUpdatedTransformFile(transformName: string) {
+  return require.resolve(`@vitest-codemod/${transformName}/dist/transformer.js`)
+}

@@ -13,7 +13,7 @@ const jestToVitestApiMap: Record<string, string> = {
   jest: 'vi',
 }
 
-export const getApisFromMemberExpression = (j: JSCodeshift, source: Collection<any>): string[] => {
+export function getApisFromMemberExpression(j: JSCodeshift, source: Collection<any>): string[] {
   const apisFromMemberExpression = []
 
   for (const [jestApi, jestApiProps] of Object.entries(jestGlobalApiProps)) {

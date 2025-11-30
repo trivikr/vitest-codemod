@@ -6,7 +6,7 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
  * - If there's a factory mock and empty mocks, remove the empty mocks
  * - If there are multiple factory mocks, keep only the last one (it overrides previous ones)
  */
-export const deduplicateViMocks = (j: JSCodeshift, source: Collection<any>): void => {
+export function deduplicateViMocks(j: JSCodeshift, source: Collection<any>): void {
   // Find all vi.mock calls
   const mockCalls = source.find(j.CallExpression, {
     callee: {

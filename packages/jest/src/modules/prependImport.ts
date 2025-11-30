@@ -1,6 +1,6 @@
 import type { Collection, ImportDeclaration, JSCodeshift, Node } from 'jscodeshift'
 
-export const prependImport = (j: JSCodeshift, source: Collection<any>, importDeclaration: ImportDeclaration) => {
+export function prependImport(j: JSCodeshift, source: Collection<any>, importDeclaration: ImportDeclaration) {
   // Check if there's already a vitest import and merge specifiers if so
   const existingVitestImport = source.find(j.ImportDeclaration, {
     source: { value: 'vitest' },

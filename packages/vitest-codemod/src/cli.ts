@@ -5,7 +5,8 @@
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import path from 'path'
+import process from 'node:process'
+import path from 'node:path'
 import Runner from 'jscodeshift/dist/Runner'
 
 import {

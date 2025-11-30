@@ -18,7 +18,7 @@ import type { Collection, JSCodeshift } from 'jscodeshift'
  * This is important because Vitest's mocking system works better with
  * dynamic import() than with require() for mocked modules.
  */
-export const convertRequireToImport = (j: JSCodeshift, source: Collection<any>): void => {
+export function convertRequireToImport(j: JSCodeshift, source: Collection<any>): void {
   // Find all require() calls that are used to import modules with type assertions
   // Pattern: require('module') as typeof import('module')
   source.find(j.CallExpression, {

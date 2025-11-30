@@ -1,6 +1,6 @@
 import type { VitestCodemodTransform } from '@vitest-codemod/types'
 
-const getWrappedBlocks = (sentence: string, blockLength: number): string[] => {
+function getWrappedBlocks(sentence: string, blockLength: number): string[] {
   const words = sentence.split(' ')
   const blocks = []
   let currentBlock = ''
@@ -24,7 +24,7 @@ const getWrappedBlocks = (sentence: string, blockLength: number): string[] => {
   return blocks
 }
 
-export const getTransformDescription = (transform: VitestCodemodTransform): string[] => {
+export function getTransformDescription(transform: VitestCodemodTransform): string[] {
   const descriptionArr: string[] = []
 
   const columnLength = 15
