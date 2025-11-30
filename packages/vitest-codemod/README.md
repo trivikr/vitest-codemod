@@ -9,7 +9,7 @@ downstream.
 
 ## Prerequisites
 
-To use vitest-codemod, please install [Node.js][install-nodejs].
+Requires [Node.js][install-nodejs] version 20 or higher.
 
 ## Usage
 
