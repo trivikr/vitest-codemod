@@ -9,8 +9,10 @@ const apiNamesRecord: Record<string, string> = {
   setMock: 'mock',
 }
 const apiNamesToMakeAsync = ['genMockFromModule', 'createMockFromModule', 'requireActual', 'requireMock']
+// isolateModules needs special handling - convert to vi.resetModules() + inline callback
+const isolateModulesApis = ['isolateModules']
 
-export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>): void => {
+export function replaceJestObjectWithVi(j: JSCodeshift, source: Collection<any>): void {
   // Replace `jest` with `vi`
   source.find(j.MemberExpression, {
     object: { type: 'Identifier', name: 'jest' },
@@ -30,6 +32,59 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
         return
       }
 
+      // Special handling for isolateModules - convert to vi.resetModules() + inline callback
+      // jest.isolateModules(fn) -> vi.resetModules(); fn()
+      // await jest.isolateModules(async fn) -> vi.resetModules(); await fn()
+      if (isolateModulesApis.includes(propertyName)) {
+        const callExpr = path.parentPath.value
+        if (callExpr.type === 'CallExpression' && callExpr.arguments.length > 0) {
+          const callback = callExpr.arguments[0]
+          const isAsync = callback.async === true
+
+          // Create vi.resetModules() call
+          const resetModulesCall = j.expressionStatement(
+            j.callExpression(
+              j.memberExpression(j.identifier('vi'), j.identifier('resetModules')),
+              [],
+            ),
+          )
+
+          // Create the callback invocation
+          let callbackInvocation: any = j.callExpression(callback, [])
+          if (isAsync)
+            callbackInvocation = j.awaitExpression(callbackInvocation)
+
+          // Find the statement containing this call
+          let statementPath = path.parentPath
+          while (statementPath && !['ExpressionStatement', 'AwaitExpression'].includes(statementPath.value.type))
+            statementPath = statementPath.parentPath
+
+          // If the call is wrapped in await, we need to handle the AwaitExpression
+          if (statementPath?.value.type === 'AwaitExpression') {
+            // Find the ExpressionStatement parent
+            let exprStatementPath = statementPath
+            while (exprStatementPath && exprStatementPath.value.type !== 'ExpressionStatement')
+              exprStatementPath = exprStatementPath.parentPath
+
+            if (exprStatementPath) {
+              // Replace the statement with resetModules + callback invocation
+              j(exprStatementPath).replaceWith([
+                resetModulesCall,
+                j.expressionStatement(callbackInvocation),
+              ])
+            }
+          }
+          else if (statementPath?.value.type === 'ExpressionStatement') {
+            // Replace the statement with resetModules + callback invocation
+            j(statementPath).replaceWith([
+              resetModulesCall,
+              j.expressionStatement(callbackInvocation),
+            ])
+          }
+        }
+        return
+      }
+
       if (apiNamesRecord[propertyName])
         path.node.property.name = apiNamesRecord[propertyName]
 
@@ -41,9 +96,10 @@ export const replaceJestObjectWithVi = (j: JSCodeshift, source: Collection<any>)
 
         // Add async to the function
         let parentPath = path.parentPath
-        while (!['FunctionExpression', 'ArrowFunctionExpression'].includes(parentPath.value.type))
+        while (parentPath && !['FunctionExpression', 'ArrowFunctionExpression', 'FunctionDeclaration'].includes(parentPath.value?.type))
           parentPath = parentPath.parentPath
-        parentPath.value.async = true
+        if (parentPath?.value)
+          parentPath.value.async = true
       }
     }
 

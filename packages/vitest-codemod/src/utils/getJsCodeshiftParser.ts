@@ -4,19 +4,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import { readFileSync } from 'fs'
-import { dirname, join } from 'path'
+import { readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import argsParser from 'jscodeshift/dist/argsParser'
 
 // @ts-expect-error: package.json will be imported from dist folders
 import { version } from '../../package.json'
 
-const requirePackage = (name: string) => {
+function requirePackage(name: string) {
   const entry = require.resolve(name)
   let dir = dirname(entry)
   while (dir !== '/') {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
       const pkg = require(join(dir, 'package.json'))
       return pkg.name === name ? pkg : {}
     }
@@ -26,8 +26,8 @@ const requirePackage = (name: string) => {
   return {}
 }
 
-export const getJsCodeshiftParser = () =>
-  argsParser.options({
+export function getJsCodeshiftParser() {
+  return argsParser.options({
     transform: {
       display_index: 15,
       abbr: 't',
@@ -151,3 +151,4 @@ export const getJsCodeshiftParser = () =>
       default: false,
     },
   })
+}

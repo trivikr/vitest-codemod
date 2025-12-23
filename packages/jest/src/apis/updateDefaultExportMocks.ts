@@ -1,10 +1,11 @@
-import { dirname, join, resolve } from 'path'
+import { dirname, join, resolve } from 'node:path'
 import type {
   ArrowFunctionExpression, Collection, FunctionExpression,
   Identifier, JSCodeshift, MemberExpression, ObjectProperty,
 } from 'jscodeshift'
 
-export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>, filePath: string) => {
+export function updateDefaultExportMocks(j: JSCodeshift, source: Collection<any>, filePath: string) {
+  // Find all jest.mock() and jest.setMock() calls
   source.find(j.CallExpression, {
     callee: {
       type: 'MemberExpression',
@@ -27,14 +28,29 @@ export const updateDefaultExportMocks = (j: JSCodeshift, source: Collection<any>
     if (moduleName.type !== 'Literal' && moduleName.type !== 'StringLiteral')
       return
 
-    // @ts-expect-error - moduleName is a Literal/StringLiteral
-    const modulePath = resolve(join(dirname(filePath), moduleName.value))
-
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const module = require(modulePath)
-
-    if (typeof module === 'object')
+    // Only process relative paths
+    const moduleValue = (moduleName as any).value as string
+    if (!moduleValue.startsWith('.') && !moduleValue.startsWith('/'))
       return
+
+    try {
+      const modulePath = resolve(join(dirname(filePath), moduleValue))
+
+      // We use require() here to dynamically load and inspect the module at transform time.
+      // This lets us determine if the module exports a function/class (needs default wrapper)
+      // vs an object with named exports (no wrapper needed). This is more accurate than
+      // static analysis since it handles re-exports and complex module patterns.
+      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
+      const module = require(modulePath)
+
+      // If module exports an object (named exports), don't wrap with default
+      if (typeof module === 'object')
+        return
+    }
+    catch {
+      // If we can't require the module, skip this transformation
+      return
+    }
 
     if (mock.type === 'ArrowFunctionExpression') {
       const mockBody = mock.body

@@ -9,7 +9,7 @@ downstream.
 
 ## Prerequisites
 
-To use vitest-codemod, please install [Node.js][install-nodejs].
+Requires [Node.js][install-nodejs] version 20 or higher.
 
 ## Usage
 
@@ -26,6 +26,50 @@ To use vitest-codemod, please install [Node.js][install-nodejs].
   ```console
   npx clear-npx-cache
   ```
+
+## Transformations
+
+### API Replacements
+
+- `jest` → `vi` (global object)
+- `jest.fn()` → `vi.fn()`
+- `jest.mock()` → `vi.mock()`
+- `jest.spyOn()` → `vi.spyOn()`
+- `jest.requireActual()` → `await vi.importActual()`
+- `jest.requireMock()` → `await vi.importMock()`
+- `jest.createMockFromModule()` → `await vi.importMock()`
+- `jest.genMockFromModule()` → `await vi.importMock()`
+- `jest.setMock()` → `vi.mock()`
+- `jest.deepUnmock()` → `vi.unmock()`
+- `jest.resetModules()` → `vi.resetModules()`
+- `test.failing()` → `test.fails()`
+- `it.failing()` → `it.fails()`
+- `fit()` → `it.only()`
+
+### Import Handling
+
+- Adds `import { ... } from "vitest"` with required APIs
+- Removes `@jest/globals` imports
+- Merges specifiers with existing vitest imports
+
+### Type Replacements
+
+- `jest.Mock` → `Mock`
+- `jest.SpyInstance` → `MockInstance`
+- `jest.Mocked<T>` → `Mocked<T>`
+- `jest.MockedFunction<T>` → `MockedFunction<T>`
+- `jest.MockedClass<T>` → `MockedClass<T>`
+- `jest.MockedObject<T>` → `MockedObject<T>`
+
+### Mock Factory Handling
+
+- Adds factory functions to `vi.mock()` calls without them
+- Converts `require()` inside mock factories to `await import()`
+- Removes duplicate mock calls for the same module
+
+### Snapshot Handling
+
+- Removes `Array` and `Object` prototype prefixes from snapshots
 
 ## Example
 
@@ -47,6 +91,33 @@ describe("basic", () => {
   })
 });
 ```
+
+### Mocking Example
+
+```javascript
+// Before
+jest.mock('./utils');
+const mockFn = jest.fn();
+jest.spyOn(console, 'log');
+const actual = jest.requireActual('./utils');
+
+// After
+import { vi } from "vitest";
+vi.mock('./utils');
+const mockFn = vi.fn();
+vi.spyOn(console, 'log');
+const actual = await vi.importActual('./utils');
+```
+
+## Limitations
+
+Some patterns may require manual adjustment after running the codemod:
+
+- `jest.isolateModules()` - Converted to `vi.resetModules()` but may need manual review
+- `jest.enableAutomock()` - Not supported in Vitest
+- Complex mock setups with variable hoisting may need `vi.hoisted()`
+- Timer mocks may need adjustment for Vitest's API differences
+- Default export detection uses `require()` at transform time, which executes module code
 
 ## License
 

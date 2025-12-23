@@ -1,2 +1,3 @@
-export const getSnapshotWithoutPrototype = (snapshot: string) =>
-  snapshot.replace('Array [', '[').replace('Object {', '{')
+export function getSnapshotWithoutPrototype(snapshot: string) {
+  return snapshot.replace('Array [', '[').replace('Object {', '{')
+}

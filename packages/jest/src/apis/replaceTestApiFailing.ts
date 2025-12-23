@@ -3,7 +3,7 @@ import type { Collection, Identifier, JSCodeshift } from 'jscodeshift'
 const jestFailsApisName = 'failing'
 const vitestFailsApisName = 'fails'
 
-export const replaceTestApiFailing = (j: JSCodeshift, source: Collection<any>): void => {
+export function replaceTestApiFailing(j: JSCodeshift, source: Collection<any>): void {
   for (const testApiName of ['it', 'test']) {
     // Replace `(it|test).failing` with `(it|test).fails`
     source.find(j.MemberExpression, {
