@@ -12,7 +12,7 @@ jobs:
   lock:
     runs-on: ubuntu-latest
     steps:
-      - uses: dessant/lock-threads@v4
+      - uses: dessant/lock-threads@v6
         if: github.repository == 'trivikr/vitest-codemod'
         with:
           github-token: ${{ github.token }}
