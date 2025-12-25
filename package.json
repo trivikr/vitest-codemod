@@ -8,35 +8,22 @@
     "build": "yarn workspaces foreach --topological-dev --verbose --all run build",
     "g:tsc": "cd $INIT_CWD && tsc -p tsconfig.build.json",
     "g:vitest": "cd $INIT_CWD && vitest",
-    "lint": "eslint 'packages/**/*.{js,ts,json,md}'",
+    "lint": "oxlint packages/**/*.{js,ts,json,md}",
     "release": "yarn build && changeset publish",
     "test": "yarn workspaces foreach --topological-dev --verbose --all run test",
     "version": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.43.1",
     "@changesets/changelog-github": "^0.5.2",
     "@changesets/cli": "^2.29.8",
     "@tsconfig/node14": "^1.0.3",
     "@types/jscodeshift": "^0.12.0",
     "@types/node": "^14.18.63",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.57.1",
-    "lint-staged": "^13.3.0",
-    "simple-git-hooks": "^2.13.1",
+    "oxlint": "^1.35.0",
     "typescript": "~4.9.5",
     "vitest": "^0.34.6"
   },
   "workspaces": [
     "packages/*"
-  ],
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,ts,json,md}": [
-      "eslint --cache --fix"
-    ]
-  }
+  ]
 }
