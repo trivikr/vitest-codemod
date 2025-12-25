@@ -2,6 +2,8 @@
   "prettier.enable": false,
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  }
+    "source.fixAll.oxc": "explicit"
+  },
+  "editor.rulers": [80, 120],
+  "editor.tabSize": 2
 }

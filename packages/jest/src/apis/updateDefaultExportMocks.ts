@@ -40,7 +40,6 @@ export function updateDefaultExportMocks(j: JSCodeshift, source: Collection<any>
       // This lets us determine if the module exports a function/class (needs default wrapper)
       // vs an object with named exports (no wrapper needed). This is more accurate than
       // static analysis since it handles re-exports and complex module patterns.
-      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
       const module = require(modulePath)
 
       // If module exports an object (named exports), don't wrap with default

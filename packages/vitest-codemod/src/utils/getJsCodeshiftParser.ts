@@ -1,7 +1,6 @@
 // Most of the code from here is from bin/jscodeshift.js
 // It's kept that way so that users can reuse jscodeshift options.
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 import { readFileSync } from 'node:fs'
@@ -16,11 +15,9 @@ function requirePackage(name: string) {
   let dir = dirname(entry)
   while (dir !== '/') {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
       const pkg = require(join(dir, 'package.json'))
       return pkg.name === name ? pkg : {}
-    }
-    catch (error) {}
+    } catch {}
     dir = dirname(dir)
   }
   return {}
