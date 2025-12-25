@@ -11,6 +11,6 @@ Improve transformations and update dependencies
 - Scope mockImplementation→function conversion to vi.mocked() calls only
 - Simplify requireMock handling to use vi.importMock directly
 - Simplify default export detection using runtime require() inspection
-- Update dependencies: jscodeshift 0.16, jest 29.7, vitest 0.34, eslint 8.57
+- Update dependencies: jscodeshift 0.16, jest 29.7, vitest 4.x
 - Add test fixtures for deduplicate-mocks and require-to-import
 - Fix lint errors across codebase

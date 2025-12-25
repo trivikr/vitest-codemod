@@ -21,7 +21,7 @@
     "@types/node": "^14.18.63",
     "oxlint": "^1.35.0",
     "typescript": "~4.9.5",
-    "vitest": "^0.34.6"
+    "vitest": "^4.0.16"
   },
   "workspaces": [
     "packages/*"
