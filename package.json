@@ -11,7 +11,7 @@
     "lint": "oxlint packages/**/*.{js,ts,json,md}",
     "release": "yarn build && changeset publish",
     "test": "yarn workspaces foreach --topological-dev --verbose --all run test",
-    "version": "changeset version && yarn --no-immutable"
+    "version-packages": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.2",
